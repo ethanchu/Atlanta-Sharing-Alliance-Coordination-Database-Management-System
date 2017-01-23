@@ -1,2 +1,3 @@
 name		email
 Yichen Zhu	yzhu421@gatech.edu
+Lifeng Wan  lwan33@gatech.edu
