@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 03, 2017 at 10:00 AM
+-- Generation Time: Apr 05, 2017 at 09:55 PM
 -- Server version: 5.7.17
 -- PHP Version: 7.1.2
+
+DROP DATABASE IF EXISTS `cs6400_sp17_team022`;
+SET default_storage_engine=InnoDB;
+
+CREATE DATABASE IF NOT EXISTS cs6400_sp17_team022 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE cs6400_sp17_team022;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -54,7 +60,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`client_id`, `phone_number`, `head_of_household`, `name`, `description`) VALUES
-(1, '4085446945', 0, 'Yichen', 'lol'),
+(1, '1234567890', 0, 'ZhangZhe', 'too young too simple'),
 (2, '1101191180', 0, 'Trump', 'President'),
 (3, '4332561234', 0, 'Kobe Byrant', 'Basketball');
 
@@ -68,13 +74,6 @@ CREATE TABLE `foodbank` (
   `site_id` int(16) UNSIGNED NOT NULL,
   `service_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `foodbank`
---
-
-INSERT INTO `foodbank` (`site_id`, `service_name`) VALUES
-(1, 'foodbank');
 
 -- --------------------------------------------------------
 
@@ -148,8 +147,15 @@ CREATE TABLE `shelter` (
   `description` varchar(250) NOT NULL,
   `hours_of_operation` varchar(100) NOT NULL,
   `condition_for_use` varchar(250) NOT NULL,
-  `familyroom_count` int(16) UNSIGNED NOT NULL
+  `familyroom_count` int(16) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `shelter`
+--
+
+INSERT INTO `shelter` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `familyroom_count`) VALUES
+(1, 'shelter', '789', '789', '789', 2);
 
 -- --------------------------------------------------------
 
@@ -186,9 +192,16 @@ CREATE TABLE `soupkitchen` (
   `description` varchar(50) NOT NULL,
   `hours_of_operation` varchar(100) NOT NULL,
   `condition_for_use` varchar(250) NOT NULL,
-  `seat_capacity` int(16) UNSIGNED NOT NULL,
-  `seat_available` int(16) UNSIGNED NOT NULL
+  `seat_capacity` int(16) UNSIGNED DEFAULT NULL,
+  `seat_available` int(16) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `soupkitchen`
+--
+
+INSERT INTO `soupkitchen` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `seat_capacity`, `seat_available`) VALUES
+(1, 'soupkitchen', '987', '987', '987', 12, 10);
 
 -- --------------------------------------------------------
 
@@ -219,6 +232,15 @@ CREATE TABLE `waitlist` (
   `waitinglist_ranking` int(16) UNSIGNED NOT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `waitlist`
+--
+
+INSERT INTO `waitlist` (`site_id`, `service_name`, `client_id`, `waitinglist_ranking`, `datetime`) VALUES
+(1, 'shelter', 1, 1, '2017-04-05 21:50:37'),
+(1, 'shelter', 2, 2, '2017-04-05 21:50:41'),
+(1, 'shelter', 3, 3, '2017-04-05 21:50:45');
 
 --
 -- Indexes for dumped tables
@@ -308,6 +330,11 @@ ALTER TABLE `waitlist`
 --
 
 --
+-- AUTO_INCREMENT for table `bunk`
+--
+ALTER TABLE `bunk`
+  MODIFY `bunk_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
@@ -335,7 +362,7 @@ ALTER TABLE `user`
 -- Constraints for table `bunk`
 --
 ALTER TABLE `bunk`
-  ADD CONSTRAINT `SHELTER_BUNK` FOREIGN KEY (`site_id`,`service_name`) REFERENCES `shelter` (`site_id`, `service_name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `SHELTER_BUNK` FOREIGN KEY (`site_id`,`service_name`) REFERENCES `shelter` (`site_id`, `service_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `foodbank`

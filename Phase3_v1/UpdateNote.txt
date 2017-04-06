@@ -2,11 +2,11 @@
 
 -----------------------
 Update on April,5th,2017
-1. Update database:
+1. Update database(database cs6400_sp17_team022_April052017.sql includes all the changes ):
     a. Can use this one to directly import into wamp.
     b. Update waitlist to be cascaded delete&update for shelter and client.
     c. Change bunk_id to be AutoIncremental.
-    d. bunk_type can only be: male, female, mixed.
-    e. testing
-2. Question to team
-    a. When log-in, need to put user_id and site_id into session
+    d. bunk_type can only be: male, female, mixed; update bunk to be cascaded delete&update for shelter.
+    e. For service(soupkitchen and shelter), Only (Site_ID Service Name Description Hours_of_Operation Condition_for_Use) are not null.
+2. Information pass to team.
+    a. When log-in, need to put user_id and site_id into session. Since session is global variable, we only store id into it, like site_id, bunk_id, client_id , user_id and item_id

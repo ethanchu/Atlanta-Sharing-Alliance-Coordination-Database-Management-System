@@ -70,6 +70,10 @@ if (isset($_POST["addservice"])) {
 }
 ?>
 
+<?php
+// Work for Logout
+?>
+
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
 
