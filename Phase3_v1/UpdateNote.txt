@@ -7,5 +7,6 @@ Update on April,5th,2017
     b. Update waitlist to be cascaded delete&update for shelter and client.
     c. Change bunk_id to be AutoIncremental.
     d. bunk_type can only be: male, female, mixed.
+    e. testing
 2. Question to team
     a. When log-in, need to put user_id and site_id into session
