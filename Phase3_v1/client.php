@@ -32,12 +32,13 @@ session_start();
 				<input type="submit" id = "submit" value = "Search ID" />
 			</p>					
 		</form>
-		<a href="registerclient.php"> Register Client</a>  
+		
 		<form action ="registerclient.php" method = "POST">
 			<p>
 				<input type="submit" id = "submit" value = "Register Client" />
 			</p>					
 		</form>
+		<a href="siteservice.php">Home</a>
 			<?php if( isset($_SESSION['Error']) ){
 	
         echo $_SESSION['Error'];
