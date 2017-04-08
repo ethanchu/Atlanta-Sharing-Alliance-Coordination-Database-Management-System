@@ -83,11 +83,11 @@ if (!$result) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
+<link href="_css/styles.css" rel="stylesheet" type="text/css">
 <title>View/Edit Waitlist</title>
 </head>
 
-
+<div class="center">
 <h1> View/Edit Waitlist </h1>
 <p>
 <table>
@@ -173,7 +173,7 @@ if (!$result) {
         </tr>
     </table>
 </p>
-
+</div>
 
 
 

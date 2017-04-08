@@ -75,10 +75,11 @@ $preinfo = mysqli_fetch_assoc($result);
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
-<title>Edit Service</title>
+<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<title >Edit Service</title>
 </head>
 
+<div class="center">
 <h1> Edit Service </h1>
 <p>
 <table>
@@ -150,7 +151,7 @@ $preinfo = mysqli_fetch_assoc($result);
 </div>
 
 
-
+</div>
 
 
 <?php include("lib/footer.php"); ?>

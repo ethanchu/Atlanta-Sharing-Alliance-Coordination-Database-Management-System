@@ -82,10 +82,10 @@ if (isset($_POST["returnsiteservice"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
+<link href="_css/styles.css" rel="stylesheet" type="text/css">
 <title>Add Service</title>
 </head>
-
+<div class="center">
 <h1> Add Service </h1>
 <p>
     <table>
@@ -143,7 +143,7 @@ if (isset($_POST["returnsiteservice"])) {
         <input type="submit" name="addservice" value="Add Service" />
     </form>
 </div>
-
+</div>
 
 
 
