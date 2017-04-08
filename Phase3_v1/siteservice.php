@@ -76,10 +76,11 @@ if (isset($_POST["addservice"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
+<link href="_css/styles.css" rel="stylesheet" type="text/css">
 <title>Site Service</title>
 </head>
 
+<div class="center">
 <h1> Site Service </h1>
 <p>
     <table>
@@ -168,5 +169,6 @@ if (isset($_POST["addservice"])) {
 
 </p>
 
+</div>
 
 <?php include("lib/footer.php"); ?>

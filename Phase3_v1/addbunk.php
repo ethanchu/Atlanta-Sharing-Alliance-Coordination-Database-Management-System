@@ -55,10 +55,10 @@ while ($bunk = mysqli_fetch_assoc($result)){
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
+<link href="_css/styles.css" rel="stylesheet" type="text/css">
 <title>Add Bunk</title>
 </head>
-
+<div class="center">
 <h1> Add Bunk </h1>
 <p>
 <table>
@@ -110,7 +110,7 @@ while ($bunk = mysqli_fetch_assoc($result)){
     </form>
 </div>
 
-
+</div>
 
 
 
