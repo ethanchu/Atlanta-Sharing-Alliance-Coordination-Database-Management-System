@@ -71,6 +71,31 @@ if (isset($_POST["addservice"])) {
 ?>
 
 <?php
+if (isset($_POST["foodbankmainmenu"])) {
+    redirect_to("servicemainmenu.php?servicetype=FoodBank");
+}
+?>
+
+<?php
+if (isset($_POST["foodpantrymainmenu"])) {
+    redirect_to("servicemainmenu.php?servicetype=FoodPantry");
+}
+?>
+
+<?php
+if (isset($_POST["sheltermainmenu"])) {
+    redirect_to("servicemainmenu.php?servicetype=Shelter");
+}
+?>
+
+<?php
+if (isset($_POST["soupkitchenmainmenu"])) {
+    redirect_to("servicemainmenu.php?servicetype=SoupKitchen");
+}
+?>
+
+
+<?php
 // Work for Logout
 ?>
 
@@ -99,7 +124,8 @@ if (isset($_POST["addservice"])) {
     <?php
           if(isset($foodbank)) {
        ?>
-       <tr><input type="submit" name="foodbankmainmenu" value="Foodbank Mainmenu" /></tr>
+        <form action="siteservice.php" method="POST">
+            <tr><input type="submit" name="foodbankmainmenu" value="Foodbank Mainmenu" /></tr> </form>
        <tr> edit </tr>
               <?php
                 if ($servicenum > 1) {
@@ -117,7 +143,8 @@ if (isset($_POST["addservice"])) {
     <?php
     if(isset($foodpantry)) {
         ?>
-        <tr><input type="submit" name="foodpantrymainmenu" value="Foodpantry Mainmenu" /> </tr>
+        <form action="siteservice.php" method="POST">
+            <tr><input type="submit" name="foodpantrymainmenu" value="Foodpantry Mainmenu" /> </tr></form>
         <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("foodpantry"); ?>" > edit </a></tr>
         <?php
         if ($servicenum > 1) {
@@ -135,7 +162,8 @@ if (isset($_POST["addservice"])) {
     <?php
     if(isset($shelter)) {
         ?>
-        <tr><input type="submit" name="sheltermainmenu" value="Shelter Mainmenu" /></tr>
+        <form action="siteservice.php" method="POST">
+            <tr><input type="submit" name="sheltermainmenu" value="Shelter Mainmenu" /></tr></form>
         <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("shelter"); ?>" > edit </a></tr>
         <?php
         if ($servicenum > 1) {
@@ -153,7 +181,8 @@ if (isset($_POST["addservice"])) {
     <?php
     if(isset($soupkitchen)) {
         ?>
-        <tr><input type="submit" name="soupkitchenmainmenu" value="Soupkitchen Mainmenu" /></tr>
+        <form action="siteservice.php" method="POST">
+            <tr><input type="submit" name="soupkitchenmainmenu" value="Soupkitchen Mainmenu" /></tr></form>
         <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("soupkitchen"); ?>" > edit </a></tr>
         <?php
         if ($servicenum > 1) {
