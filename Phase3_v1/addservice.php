@@ -82,7 +82,7 @@ if (isset($_POST["returnsiteservice"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
 <title>Add Service</title>
 </head>
 <div class="center">
