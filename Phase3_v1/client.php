@@ -13,7 +13,9 @@ session_start();
 <body>
 	Welcome to Atlanta Sharing Alliance Coordination System!
 
+
 	<div id="frm">
+		<a href="siteservice.php">Home</a>	
 		<form action ="searchname.php" method = "POST">
 			<p>
 				<label>Client Name</label>
@@ -36,9 +38,10 @@ session_start();
 		<form action ="registerclient.php" method = "POST">
 			<p>
 				<input type="submit" id = "submit" value = "Register Client" />
-			</p>					
+			</p>	
+
 		</form>
-		<a href="siteservice.php">Home</a>
+
 			<?php if( isset($_SESSION['Error']) ){
 	
         echo $_SESSION['Error'];

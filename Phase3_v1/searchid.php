@@ -16,17 +16,17 @@ include ("dbh.php");
     	</tr>
     <?php	
 		//get value passed from form in login.php file
-		$name = $_POST['client_name'];
 		
+		$id= $_POST['client_cardID'];
 
 		//Query the database for user
-		$sql="SELECT * FROM client where name LIKE '%$name%' ";//need to use single quote for variables
+		$sql="SELECT * FROM client where description LIKE '%$id%' ";//need to use single quote for variables
 		$query= mysqli_query($con,$sql);
 		
 		$count = mysqli_num_rows($query); 
 		//no entry
-    	if (empty(trim($name))) {
-            $_SESSION['Error'] = "Please enter a name.";
+    	if (empty(trim($id))) {
+            $_SESSION['Error'] = "Please enter an ID.";
             header("location: client.php");	
     	}
 	    //no match
@@ -40,9 +40,8 @@ include ("dbh.php");
 			$_SESSION['Error'] = "Please enter a more unique search term";
 			header("location: client.php");	
 
-		}   
+		}
     	while($row = mysqli_fetch_array($query,MYSQLI_NUM)){
-    		$id = urlencode($row[0]);
         	print "<tr>";
 			print "<td>" . $row[3] . "</td>";
 			print "<td>" . $row[4] . "</td>";
@@ -51,7 +50,7 @@ include ("dbh.php");
    		}
     ?>
     </table>
-    		<a href="client.php">Go back to Client</a> 
+		<a href="client.php">Go back to Client</a> 
 	</body>
 </html>
 
