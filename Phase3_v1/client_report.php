@@ -80,7 +80,7 @@ include ("dbh.php");
             ?>                
             </table>                        
         </div>         
-
+        <a href="client.php">Go back to Client</a> 
 	</body>
 </html>
 

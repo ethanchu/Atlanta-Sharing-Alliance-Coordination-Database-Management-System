@@ -1,9 +1,6 @@
-
-
- <?php
+<?php
 session_start();
 include ("dbh.php");
-
 ?>
 <html> 
     <title>Client Report</title>
@@ -25,62 +22,66 @@ include ("dbh.php");
         $queryID = mysqli_query($con, $sql);
         $row = mysqli_fetch_array($queryID,MYSQLI_NUM);
         $oldname = $row[0];
-        echo $oldname;
+        
 
         //retrieve old field_modified from log
         $sql="select field_modified from log where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
+        
+        if(mysqli_num_rows($queryID)>0){
         $row = mysqli_fetch_array($queryID,MYSQLI_NUM);
         $oldfield = $row[0];
-        echo $oldfield;
+        $oldname .= $oldfield;
+        
+        }
 
+        
         //add old name to log field_modified
-        $sql="update log set field_modified ='$oldfield $oldname' where client_id = $clientid ";
+        $sql="update log set field_modified ='$oldname' where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
+        $count =mysqli_affected_rows($con); 
+        
         
         //update client name as new name
         $sql="update client set name = '$nname' where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
         $count =mysqli_affected_rows($con); 
-        echo $count;
-
+        if($count >0) {
+            $_SESSION['success'] = "New name has been updated for client!";
+        }
+        
         
     }
-
     if(isset($_POST['modID'])){
         $ndescri = $_POST['newdescription'];
         if (empty(trim($ndescri))) {
             $_SESSION['Error2'] = "Please enter a new ID description.";   
         }
-
         $sql="select description from client where client_id = $clientid";
         $queryID = mysqli_query($con, $sql);
         $row = mysqli_fetch_array($queryID,MYSQLI_NUM);
         $olddescription = $row[0];
-        echo $olddescription;
-
-
+        
         //retrieve old field_modified from log
         $sql="select field_modified from log where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
         $row = mysqli_fetch_array($queryID,MYSQLI_NUM);
         $oldfield = $row[0];
-        echo $oldfield;
-
+        
         //add old field to log field_modified
         $sql="update log set field_modified = '$oldfield $olddescription' where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
         
-
         //update client name as new name
         $sql="update client set description = '$ndescri' where client_id = $clientid ";
         $queryID = mysqli_query($con, $sql);
         $count =mysqli_affected_rows($con); 
-        echo $count;
-
+        if($count >0) {
+            $_SESSION['success'] = "New ID has been updated for client!";
+        }
+        
     
     }
-
     ?>  
     <div id="frm1"> 
         <form action ="" method = "POST">
@@ -95,21 +96,23 @@ include ("dbh.php");
             if( isset($_SESSION['Error1']) ){
     
                 echo $_SESSION['Error1'];
-
                 unset($_SESSION['Error1']);
             }
             if( isset($_SESSION['Error2']) ){
     
                 echo $_SESSION['Error2'];
-
                 unset($_SESSION['Error2']);
+            }
+            if( isset($_SESSION['success']) ){
+    
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
             }
         ?>      
                                   
 </div> 
 
         
-
+<a href="client.php">Go back to Client</a> 
     </body>
 </html>
-

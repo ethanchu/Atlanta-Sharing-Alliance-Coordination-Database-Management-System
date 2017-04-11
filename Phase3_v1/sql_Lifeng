@@ -1,0 +1,28 @@
+registerclient.php :
+$sql="INSERT INTO client (client_id, phone_number, head_of_household, name, description) ".
+     "VALUES (NULL, '$phone_number', '$head_of_household', '$name', '$description')";
+
+searchname.php :
+$sql="SELECT * FROM client where name LIKE '%$name%' ";
+
+searchid.php:
+$sql="SELECT * FROM client where description LIKE '%$id%' ";
+
+client_report.php :
+$sql="SELECT * FROM client where client_id=$request_id1 ";     
+$sql="SELECT * FROM log where client_id=$request_id2 ";
+
+edit_client.php :
+$sql="select name from client where client_id = $clientid";
+$sql="select field_modified from log where client_id = $clientid ";
+$sql="update log set field_modified ='$oldfield $oldname' where client_id = $clientid ";
+$sql="update client set name = '$nname' where client_id = $clientid ";
+
+$sql="select description from client where client_id = $clientid";
+$sql="select field_modified from log where client_id = $clientid ";
+$sql="update log set field_modified = '$oldfield $olddescription' where client_id = $clientid ";
+$sql="update client set description = '$ndescri' where client_id = $clientid ";
+
+new_log.php:
+$sql="INSERT INTO log (client_id, site_id, description, note) ".
+     "VALUES ('$clientid', $site, '$descri', '$note')";

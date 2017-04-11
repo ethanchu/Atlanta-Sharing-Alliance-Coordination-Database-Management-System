@@ -20,7 +20,16 @@ if(isset($_POST['submit'])){
     $sql="INSERT INTO client (client_id, phone_number, head_of_household, name, description) ".
      "VALUES (NULL, '$phone_number', '$head_of_household', '$name', '$description')";
     $queryID = mysqli_query($con, $sql);
-    $count =mysqli_affected_rows($con);        
+    $count =mysqli_affected_rows($con);  
+    if($count >0) {
+        $_SESSION['success']= "New client has been successfully registered!";
+        
+
+    }      
+    else 
+    {
+        $_SESSION['Error3'] = "New client failed to be registered!"; 
+    }
     
 
 }    
@@ -59,6 +68,7 @@ if(isset($_POST['submit'])){
             <p> 
                 <input type="submit" id = "submit" name="submit" value = "register" />
             </p>
+            <a href="client.php">Go back to Client</a>  
         </form> 
         <?php 
             if( isset($_SESSION['Error1']) ){
@@ -72,6 +82,18 @@ if(isset($_POST['submit'])){
                 echo $_SESSION['Error2'];
 
                 unset($_SESSION['Error2']);
+            }
+             if( isset($_SESSION['Error3']) ){
+    
+                echo $_SESSION['Error3'];
+
+                unset($_SESSION['Error3']);
+            }
+             if( isset($_SESSION['success']) ){
+    
+                echo $_SESSION['success'];
+
+                unset($_SESSION['success']);
             }
         ?>
 </div>

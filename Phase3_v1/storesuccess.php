@@ -6,11 +6,11 @@ include ("dbh.php");
 
 ?>
 <html> 
-    <title>Client Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css"
+	<title>Client Report</title>
+	<link rel="stylesheet" type="text/css" href="style.css"
     <body>
-    Welcome to Atlanta Sharing Alliance Coordination System!<br>
-    Please enter new client log information below!<br>
+  	Welcome to Atlanta Sharing Alliance Coordination System!<br>
+    Please enter new client log information below!
 
     <?php   
                 
@@ -21,6 +21,8 @@ include ("dbh.php");
         $descri = $_POST['ldescription'];
     
         $note = $_POST['lnote'];
+        echo $clientid;
+        echo $descri;
         if (empty(trim($descri))) {
         $_SESSION['Error1'] = "Please enter a description.";   
     }
@@ -32,10 +34,7 @@ include ("dbh.php");
      "VALUES ('$clientid', $site, '$descri', '$note')";
     $queryID = mysqli_query($con, $sql);
     $count =mysqli_affected_rows($con); 
-    if($count >0) {
-        $_SESSION['success'] = "A new log entry has been added for client!";
-    }
- 
+    echo $count;
 
 
     }
@@ -75,17 +74,12 @@ include ("dbh.php");
 
                 unset($_SESSION['Error2']);
             }
-            if( isset($_SESSION['success']) ){
-    
-                echo $_SESSION['success'];
-                unset($_SESSION['success']);
-            }
         ?>      
                                   
 </div> 
 
-        <a href="client.php">Go back to Client</a>
+        
 
-    </body>
+	</body>
 </html>
 
