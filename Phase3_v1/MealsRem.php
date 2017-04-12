@@ -1,15 +1,15 @@
 <?php
 include("db_conn.php");
 
-$query = mysql_query("select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
+$query = "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
 UNION
 SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Meat/seafood' OR sub_category='Dairy/eggs' group by category,sub_category
 UNION
-SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' group by category,sub_category) abc order by unit limit 1;") or die(mysql_error());
+SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' group by category,sub_category) abc order by unit limit 1;";
 
-//$result = mysql_query($query)or die(mysql_error());
+$result = mysqli_query($connection, $query);
 
-if($row = mysql_fetch_assoc($query))
+if($row = mysqli_fetch_assoc($result))
 	{
 		$value1 = $row['unit'];
 		$value2 = $row['sub_category'];

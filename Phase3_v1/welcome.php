@@ -4,6 +4,7 @@ if (isset ( $_SESSION ['username'] )) {
 	$name = $_SESSION ['username'];
 }
 ?>
+
 <html>
 
 <head>

@@ -1,14 +1,17 @@
 <?php
 include ("db_conn.php");
 
-$query = mysql_query ( "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+$query_bunk = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
 Shelter.hours_of_operation, Shelter.condition_for_use,Bunk.type, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
-INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0;" ) or die ( mysql_error () );
-// $row = mysql_fetch_array($query) or die(mysql_error());
+INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0;";
 
-$query1 = mysql_query ( "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+$result_bunk = mysqli_query($connection, $query_bunk);
+
+$query_family = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
 Bunk.type, Shelter.familyroom_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
-INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;" ) or die ( mysql_error () );
+INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;";
+$result_family = mysqli_query($connection, $query_family);
+
 ?>
 <html>
 <link rel="stylesheet" type="text/css" href="site.css">
@@ -44,8 +47,8 @@ INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;"
 		</thead>
 		<tbody>
         <?php
-								while ( $row = mysql_fetch_assoc ( $query ) ) {
-									echo "<tr>
+        while ( $row = mysqli_fetch_assoc ( $result_bunk) ) {
+	     echo "<tr>
               <td>{$row['Name']}</td>
               <td>{$row['Address']}</td>
               <td>{$row['phone_number']}</td>
@@ -79,8 +82,8 @@ INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;"
 		</thead>
 		<tbody>
         <?php
-								while ( $row = mysql_fetch_assoc ( $query1 ) ) {
-									echo "<tr>
+        while ( $row = mysqli_fetch_assoc ( $result_family) ) {
+	   echo "<tr>
               <td>{$row['Name']}</td>
               <td>{$row['Address']}</td>
               <td>{$row['phone_number']}</td>

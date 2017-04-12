@@ -1,21 +1,40 @@
 
 <html>
-<head> <title>Atlanta Sharing Alliance Coordination System</title></head>
+
+<head>
+
+<title>Home </title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+
 <body>
-	Welcome to Atlanta Sharing Alliance Coordination System!
+<!--<h1>Back To Home </h1> -->
+<br>
+<br>
+<br>
 
-<form action ="Login.php" method = "post">
-		<input type="submit" value = "Log In">
+	<!-- For Login page -->
+<form action ="login.php" method="post">
+<div class="container">
+<button type="submit">Login</button> 
+</div>
 </form>
 
-<form action ="Bunks.php" method = "post">
-		<input type="submit" value = "View Bunks/Rooms">
+	<!-- For Bunk Guest page -->
+<form action ="BunkGuest.php" method="post">
+<div class="container">
+<button type="submit">Bunks/Rooms Available(For guest)</button>
+</div> 
 </form>
 
-<form action ="Meals.php" method = "post">
-		<input type="submit" value = "View Meals Remaining">
+	<!-- For Meals Remaing page -->
+<form action ="MealsRem.php" method="post">
+<div class="container">
+<button type="submit">Meals Remaining</button> 
+</div>
 </form>
-
 
 </body>
+   
 </html>

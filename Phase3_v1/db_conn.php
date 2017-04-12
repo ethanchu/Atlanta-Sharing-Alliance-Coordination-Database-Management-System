@@ -1,15 +1,19 @@
 <?php
-
 if (!isset($_SESSION)) {
-	session_start();
+    session_start();
 }
-
-$servername = "127.0.0.1:3306";
-$username = "root";
-$password = "Priyanka";
-$database = "cs6400_sp17_team022";
-
-// Create connection
-$con=mysql_connect($servername,$username,$password) or die("Failed to connect to MySQL: " . mysql_error()); 
-$db=mysql_select_db($database,$con) or die("Failed to connect to MySQL: " . mysql_error());
+define("DB_SERVER", "127.0.0.1");
+define('DB_PORT', "3306");
+define('DB_USER', "root");
+define('DB_PASS', "Priyanka");
+define('DB_SCHEMA', "cs6400_sp17_team022");
+// 1. Create a database connection
+$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_SCHEMA, DB_PORT);
+// Test if connection succeeded
+if(mysqli_connect_errno()) {
+    die("Database connection failed: " .
+        mysqli_connect_error() .
+        " (" . mysqli_connect_errno() . ")"
+    );
+}
 ?>
