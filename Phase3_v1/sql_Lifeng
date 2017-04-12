@@ -26,3 +26,32 @@ $sql="update client set description = '$ndescri' where client_id = $clientid ";
 new_log.php:
 $sql="INSERT INTO log (client_id, site_id, description, note) ".
      "VALUES ('$clientid', $site, '$descri', '$note')";
+
+LOGIN, VIEW/MODIFY BUNK,MEALS REMAINING:
+
+1.login.php:
+	$query = "SELECT * FROM user WHERE username = '$_POST[username]' AND password = '$_POST[password]'"; 
+
+2.BunkGuest.php:
+	$query_bunk = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+	Shelter.hours_of_operation, Shelter.condition_for_use,Bunk.type, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
+	INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0;";
+
+	$query_family = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+	Bunk.type, Shelter.familyroom_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
+	INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;";
+
+3. BunkUser.php
+	$query_bunk = "Select Bunk.bunk_id, Bunk.type, Bunk.count, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
+	INNER JOIN Shelter ON Site.site_id = Shelter.site_id INNER JOIN User ON Site.site_id = User.site_id) WHERE available_count>0 and User.user_id=		  		$_SESSION[user_id]";
+
+4.MealsRem.php
+	$query = "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
+	UNION
+	SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Meat/seafood' OR sub_category='Dairy/eggs' group by category,sub_category
+	UNION
+	SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' group by category,sub_category) abc order by unit limit 1;";
+
+5.updateBunk
+	$query = "update Bunk set available_count = $_POST[available_count] where bunk_id = $_POST[id] "; 	
+
