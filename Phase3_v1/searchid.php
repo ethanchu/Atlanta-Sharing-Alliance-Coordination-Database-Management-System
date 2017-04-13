@@ -1,8 +1,5 @@
-<?php
-session_start();
-include ("dbh.php");
+<?php require_once("lib/db_connection.php"); ?>
 
-?>
 <html> 
 	<title>Search client</title>
 	<link rel="stylesheet" type="text/css" href="style.css"
@@ -20,8 +17,8 @@ include ("dbh.php");
 		$id= $_POST['client_cardID'];
 
 		//Query the database for user
-		$sql="SELECT * FROM client where description LIKE '%$id%' ";//need to use single quote for variables
-		$query= mysqli_query($con,$sql);
+		$sql="SELECT * FROM client where description LIKE '%{$id}%'";//need to use single quote for variables
+		$query= mysqli_query($connection,$sql);
 		
 		$count = mysqli_num_rows($query); 
 		//no entry
@@ -32,7 +29,7 @@ include ("dbh.php");
 	    //no match
 		if($count==0) {
 			$_SESSION['Error'] = "SORRY... No matchehed client! Please register first.";
-			header("location: client.php");	
+			header("location: client.php");
 
 		}
 		//match more than 5
@@ -50,7 +47,7 @@ include ("dbh.php");
    		}
     ?>
     </table>
-		<a href="client.php">Go back to Client</a> 
-	</body>
-</html>
+		<a href="client.php">Go back to Client</a>
+
+    <?php include("lib/footer.php"); ?>
 

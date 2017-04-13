@@ -1,10 +1,5 @@
+<?php require_once("lib/db_connection.php"); ?>
 
-
- <?php
-session_start();
-include ("dbh.php");
-
-?>
 <html> 
     <title>Client Report</title>
     <link rel="stylesheet" type="text/css" href="style.css"
@@ -28,10 +23,10 @@ include ("dbh.php");
         $_SESSION['Error2'] = "Please enter an site id.";   
     }
     
-    $sql="INSERT INTO log (client_id, site_id, description, note) ".
-     "VALUES ('$clientid', $site, '$descri', '$note')";
-    $queryID = mysqli_query($con, $sql);
-    $count =mysqli_affected_rows($con); 
+    $sql="INSERT INTO log (client_id, site_id, description, field_modified) ".
+     "VALUES ($clientid, $site, '$descri', '$note')";
+    $queryID = mysqli_query($connection, $sql);
+    $count =mysqli_affected_rows($connection);
     if($count >0) {
         $_SESSION['success'] = "A new log entry has been added for client!";
     }
@@ -86,6 +81,5 @@ include ("dbh.php");
 
         <a href="client.php">Go back to Client</a>
 
-    </body>
-</html>
+    <?php include("lib/footer.php"); ?>
 

@@ -1,9 +1,5 @@
+<?php require_once("lib/db_connection.php"); ?>
 
-<?php
-session_start();
-			
-	
-?>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -49,8 +45,7 @@ session_start();
         unset($_SESSION['Error']);
 	}?>
 
-	</div>	
+	</div>
 
 
-</body>
-</html>
+<?php include("lib/footer.php"); ?>

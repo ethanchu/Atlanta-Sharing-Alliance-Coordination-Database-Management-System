@@ -44,13 +44,13 @@ if (isset($_POST["confirm"])) {
         $query = "UPDATE $servicetype SET description = '$description', hours_of_operation = '$hoursofoperation', condition_for_use = '$conditionforuse' WHERE site_id = $currentsession AND service_name = '$servicetype'";
     }
     $result = mysqli_query($connection, $query);
-    if ($result && mysqli_affected_rows($connection) == 1) {
+    if ($result) {
         // Success
         //redirect_to("editservice.php");
         redirect_to("editservice.php?servicetype=$servicetype");
     } else {
         // Failure
-        die("Database update failed. " . mysqli_error($connection));
+        die("Update Service failed." . mysqli_error($connection));
     }
     //redirect_to("addservice.php");
 }

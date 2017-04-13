@@ -1,4 +1,4 @@
-
+<?php require_once("lib/db_connection.php"); ?>
 
 <html>
 
@@ -36,7 +36,4 @@
 
 
 
-
-</body>
-
-</html>
+<?php include("lib/footer.php"); ?>

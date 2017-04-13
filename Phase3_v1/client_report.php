@@ -1,10 +1,5 @@
+<?php require_once("lib/db_connection.php"); ?>
 
-
- <?php
-session_start();
-include ("dbh.php");
-
-?>
 <html> 
 	<title>Client Report</title>
 	<link rel="stylesheet" type="text/css" href="style.css"
@@ -27,7 +22,7 @@ include ("dbh.php");
         
                 //Query the database for user
                 $sql="SELECT * FROM client where client_id=$request_id1 ";//need to use single quote for variables
-                $query= mysqli_query($con,$sql);
+                $query= mysqli_query($connection,$sql);
         
                 while($row = mysqli_fetch_array($query,MYSQLI_NUM)){
                     $ename =urlencode($row[3]);
@@ -63,7 +58,7 @@ include ("dbh.php");
                 
                 //Query the database for user
                 $sql="SELECT * FROM log where client_id=$request_id2 ";//need to use single quote for variables
-                $query= mysqli_query($con,$sql);
+                $query= mysqli_query($connection,$sql);
         
                 while($row = mysqli_fetch_array($query,MYSQLI_NUM)){
                     
@@ -80,7 +75,7 @@ include ("dbh.php");
             ?>                
             </table>                        
         </div>         
-        <a href="client.php">Go back to Client</a> 
-	</body>
-</html>
+        <a href="client.php">Go back to Client</a>
+
+    <?php include("lib/footer.php"); ?>
 

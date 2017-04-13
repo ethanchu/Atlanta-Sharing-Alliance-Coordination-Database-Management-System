@@ -1,3 +1,4 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
 include("BunkGuest.php");
 if (isset ( $_SESSION ['user_id'] )) {
@@ -38,5 +39,5 @@ if (isset ( $_SESSION ['user_id'] )) {
 								?>
    </tbody>
    </table>
-   </body>
-</html>
+
+<?php include("lib/footer.php"); ?>

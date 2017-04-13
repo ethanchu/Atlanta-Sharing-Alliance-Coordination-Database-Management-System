@@ -9,7 +9,7 @@
 
 <?php
 if (isset($_POST["returnsheltermainmenu"])) {
-    redirect_to("siteservice.php"); // Later relink to shelter main menu.
+    redirect_to("servicemainmenu.php?servicetype=Shelter"); // Later relink to shelter main menu.
 }
 ?>
 

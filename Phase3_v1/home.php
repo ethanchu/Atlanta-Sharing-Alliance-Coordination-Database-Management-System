@@ -37,6 +37,4 @@
 
 </form>
 
-</body>
-   
-</html>
+<?php include("lib/footer.php"); ?>

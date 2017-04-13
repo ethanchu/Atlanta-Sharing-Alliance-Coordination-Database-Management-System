@@ -14,7 +14,7 @@ $servicetype =  $_GET["servicetype"];
 
 <?php
 if (isset($_POST["clientsearch"])) {
-    redirect_to("clientsearch.php"); // Need to link to Lifeng' part in the future
+    redirect_to("client.php"); // Need to link to Lifeng' part in the future
 }
 ?>
 
@@ -30,21 +30,22 @@ if (isset($_POST["itemsearch"])) {
 }
 ?>
 
+
 <?php
-if (isset($_POST["itemsearch"])) {
+if (isset($_POST["requeststatusreport"])) {
     redirect_to("requeststatusreport.php"); //Need to link to itemsearch
 }
 ?>
 
 <?php
 if (isset($_POST["waitlist"])) {
-    redirect_to("waitlist.php"); // Need to link to waitlist
+    redirect_to("editwaitlist.php"); // Need to link to waitlist
 }
 ?>
 
 <?php
 if (isset($_POST["bunkroomform"])) {
-    redirect_to("bunkroomform.php"); //Need to link to bunkroomform
+    redirect_to("BunkUser.php"); //Need to link to bunkroomform
 }
 ?>
 <!-- Html Layout Part   -->
@@ -84,3 +85,5 @@ if (isset($_POST["bunkroomform"])) {
 
 
 </div>
+
+<?php include("lib/footer.php"); ?>

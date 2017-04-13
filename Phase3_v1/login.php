@@ -59,5 +59,6 @@
   <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 		
 </form>
-</body>
-</html>
+
+
+<?php include("lib/footer.php"); ?>
