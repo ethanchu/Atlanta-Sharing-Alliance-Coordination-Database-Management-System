@@ -1,5 +1,6 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
-include("db_conn.php");
+
 
 $query = "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
 UNION
@@ -8,6 +9,7 @@ UNION
 SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' group by category,sub_category) abc order by unit limit 1;";
 
 $result = mysqli_query($connection, $query);
+
 
 if($row = mysqli_fetch_assoc($result))
 	{

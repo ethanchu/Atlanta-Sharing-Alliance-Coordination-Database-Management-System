@@ -9,7 +9,14 @@
 
 <?php
 // Use _Session[user_id] to retrieve the site_id
-    $_SESSION['site_id'] = 1;
+    $userid = $_SESSION['user_id'];
+    $query = "SELECT `site_id` FROM `user` WHERE user_id =$userid";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        die("Database query for site_id failed.");
+    }
+    $siteid = mysqli_fetch_assoc($result);
+    $_SESSION['site_id'] = $siteid["site_id"];
 ?>
 
 <?php
@@ -96,7 +103,9 @@ if (isset($_POST["soupkitchenmainmenu"])) {
 
 
 <?php
-// Work for Logout
+if (isset($_POST["logout"])) {
+    redirect_to("home.php");
+}
 ?>
 
 <!-- Html Layout Part   -->

@@ -1,5 +1,6 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
-include ("db_conn.php");
+
 
 $query_bunk = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
 Shelter.hours_of_operation, Shelter.condition_for_use,Bunk.type, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
@@ -47,6 +48,7 @@ $result_family = mysqli_query($connection, $query_family);
 		</thead>
 		<tbody>
         <?php
+
         while ( $row = mysqli_fetch_assoc ( $result_bunk) ) {
 	     echo "<tr>
               <td>{$row['Name']}</td>
@@ -82,6 +84,7 @@ $result_family = mysqli_query($connection, $query_family);
 		</thead>
 		<tbody>
         <?php
+
         while ( $row = mysqli_fetch_assoc ( $result_family) ) {
 	   echo "<tr>
               <td>{$row['Name']}</td>
