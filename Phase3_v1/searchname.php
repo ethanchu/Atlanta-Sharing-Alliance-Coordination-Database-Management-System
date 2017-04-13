@@ -1,8 +1,5 @@
-<?php
-session_start();
-include ("dbh.php");
+<?php require_once("lib/db_connection.php"); ?>
 
-?>
 <html> 
 	<title>Search client</title>
 	<link rel="stylesheet" type="text/css" href="style.css"
@@ -21,7 +18,7 @@ include ("dbh.php");
 
 		//Query the database for user
 		$sql="SELECT * FROM client where name LIKE '%$name%' ";//need to use single quote for variables
-		$query= mysqli_query($con,$sql);
+		$query= mysqli_query($connection,$sql);
 		
 		$count = mysqli_num_rows($query); 
 		//no entry
@@ -51,7 +48,7 @@ include ("dbh.php");
    		}
     ?>
     </table>
-    		<a href="client.php">Go back to Client</a> 
-	</body>
-</html>
+    		<a href="client.php">Go back to Client</a>
+
+    <?php include("lib/footer.php"); ?>
 

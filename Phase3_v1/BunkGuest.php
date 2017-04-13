@@ -9,7 +9,7 @@ INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0;";
 $result_bunk = mysqli_query($connection, $query_bunk);
 
 $query_family = "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
-Bunk.type, Shelter.familyroom_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
+Shelter.familyroom_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
 INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;";
 $result_family = mysqli_query($connection, $query_family);
 
@@ -24,8 +24,8 @@ $result_family = mysqli_query($connection, $query_family);
 	<!--  <h1>Welcome to bunk</h1> -->
       
     <?php
-				if (isset ( $_SESSION ['username'] )) {
-					echo "<a href=\"Welcome.php\">HOME</a>";
+				if (isset($_SESSION['username'])) {
+					echo "<a href=\"servicemainmenu.php?servicetype=Shelter\">Go Back to Shelter</a>";
 					
 				} else {
 					echo "<a href=\"Home.php\">HOME</a>";
@@ -78,7 +78,6 @@ $result_family = mysqli_query($connection, $query_family);
 				<th>SiteName</th>
 				<th>Address</th>
 				<th>PhoneNumber</th>
-				<th>Type</th>
 				<th>FamilyRoomCount</th>
 			</tr>
 		</thead>
@@ -90,7 +89,6 @@ $result_family = mysqli_query($connection, $query_family);
               <td>{$row['Name']}</td>
               <td>{$row['Address']}</td>
               <td>{$row['phone_number']}</td>
-              <td>{$row['type']}</td> 
  			  <td>{$row['familyroom_count']}</td>
             </tr>\n";
 								}
@@ -99,4 +97,4 @@ $result_family = mysqli_query($connection, $query_family);
 	</table>
 </body>
 
-</html>
+<?php include("lib/footer.php"); ?>

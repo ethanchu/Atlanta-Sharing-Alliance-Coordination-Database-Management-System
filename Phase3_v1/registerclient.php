@@ -1,8 +1,6 @@
-
+<?php require_once("lib/db_connection.php"); ?>
 
  <?php
-session_start();
-include ("dbh.php");
 if(isset($_POST['submit'])){
 
     $name = $_POST['nname'];
@@ -19,8 +17,8 @@ if(isset($_POST['submit'])){
     
     $sql="INSERT INTO client (client_id, phone_number, head_of_household, name, description) ".
      "VALUES (NULL, '$phone_number', '$head_of_household', '$name', '$description')";
-    $queryID = mysqli_query($con, $sql);
-    $count =mysqli_affected_rows($con);  
+    $queryID = mysqli_query($connection, $sql);
+    $count =mysqli_affected_rows($connection);
     if($count >0) {
         $_SESSION['success']= "New client has been successfully registered!";
         
@@ -97,6 +95,6 @@ if(isset($_POST['submit'])){
             }
         ?>
 </div>
-	</body>
-</html>
+
+    <?php include("lib/footer.php"); ?>
 

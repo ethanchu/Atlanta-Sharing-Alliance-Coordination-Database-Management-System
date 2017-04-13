@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 05, 2017 at 09:55 PM
+-- Generation Time: Apr 13, 2017 at 12:15 AM
 -- Server version: 5.7.17
 -- PHP Version: 7.1.2
 
@@ -15,6 +15,7 @@ USE cs6400_sp17_team022;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -41,12 +42,15 @@ CREATE TABLE `bunk` (
   `available_count` int(16) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table 'bunk'
+--
+-- Dumping data for table `bunk`
+--
 
-INSERT INTO `Bunk` (`bunk_id`, `site_id`, `service_name`, `type`, `count`) VALUES 
-('1', '3', 'shelter', 'male', '20', '10' ),
-('2', '3', 'shelter', 'female', '10', '3' )
-('3', '2', 'shelter', 'mixed', '100','50');
+INSERT INTO `bunk` (`bunk_id`, `site_id`, `service_name`, `type`, `count`, `available_count`) VALUES
+(1, 2, 'shelter', 'male', 20, 10),
+(2, 3, 'shelter', 'female', 10, 3),
+(3, 3, 'shelter', 'mixed', 100, 50);
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +72,22 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`client_id`, `phone_number`, `head_of_household`, `name`, `description`) VALUES
 (1, '1234567890', 0, 'ZhangZhe', 'too young too simple'),
 (2, '1101191180', 0, 'Trump', 'President'),
-(3, '4332561234', 0, 'Kobe Byrant', 'Basketball');
+(3, '4332561234', 0, 'Kobe Byrant', 'Basketball'),
+(4, NULL, NULL, 'Mario Taft', '12345699'),
+(5, '5102004367', NULL, 'Mario Taft', '12345669'),
+(6, '5105461297', 0, 'Peter Taft', '12345673'),
+(7, '4153246948', 0, 'Jack Liu', '12345672'),
+(8, '4156432134', 0, '', '12345671'),
+(9, '5103465278', 0, 'Mary Sutton', '12345670'),
+(10, '4154763219', 0, 'Tom Liu', '12345669'),
+(11, '5105432674', 0, 'Jack Taft', '12345668'),
+(12, '5105432712', 0, 'James Taft', '12345664'),
+(13, '5233213425', 0, 'Jason Kennedy', '12345665'),
+(14, '5104532877', 0, 'Tina Pham', '12345669'),
+(15, '5103469213', 0, 'Jessica Liu', '12345666'),
+(16, '5103469212', 0, 'Jessica Wan', '12345667'),
+(17, '415385997', 0, 'YIchen Zhu', '12345687'),
+(18, '4152009079', 0, 'Lifeng Wan', '12345691');
 
 -- --------------------------------------------------------
 
@@ -81,11 +100,13 @@ CREATE TABLE `foodbank` (
   `service_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table 'foodbank'
+--
+-- Dumping data for table `foodbank`
+--
 
-INSERT INTO `FoodBank` (`site_id`, `service_name`) VALUES 
-('3', 'foodbank')
-('2', 'foodbank');
+INSERT INTO `foodbank` (`site_id`, `service_name`) VALUES
+(2, 'foodbank'),
+(3, 'foodbank');
 
 -- --------------------------------------------------------
 
@@ -119,17 +140,18 @@ CREATE TABLE `item` (
   `service_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `item`
+--
 
--- Dumping data for table 'item'
-
-INSERT INTO `Item` (`item_id`, `name`, `unit`, `storage_type`, `expiration_date`, `category`, `sub_category`, `site_id`, `service_name`) VALUES 
-('2', 'Carrot', '2', 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Vegetables', '3', 'Foodbank'),
-('3', 'Cashew', '101', 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', '3', 'Foodbank'),
-('4', 'Pork', '20', 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', '3', 'Foodbank'),
-('5', 'Milk', '30', 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Dairy/eggs', '3', 'Foodbank'),
-('6', 'Potato', '5', 'Dry Good', '2012-01-18 00:00:00', 'Food', 'Vegetables', '3', 'Foodbank'),
-('7', 'Shrimp', '50', 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', '3', 'Foodbank'),
-('8', 'Almonds', '100', 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', '2', 'Foodbank');
+INSERT INTO `item` (`item_id`, `name`, `unit`, `storage_type`, `expiration_date`, `category`, `sub_category`, `site_id`, `service_name`) VALUES
+(2, 'Carrot', 2, 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Vegetables', 3, 'Foodbank'),
+(3, 'Cashew', 101, 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', 3, 'Foodbank'),
+(4, 'Pork', 20, 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', 3, 'Foodbank'),
+(5, 'Milk', 30, 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Dairy/eggs', 3, 'Foodbank'),
+(6, 'Potato', 5, 'Dry Good', '2012-01-18 00:00:00', 'Food', 'Vegetables', 3, 'Foodbank'),
+(7, 'Shrimp', 50, 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', 3, 'Foodbank'),
+(8, 'Almonds', 100, 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', 2, 'Foodbank');
 
 -- --------------------------------------------------------
 
@@ -179,10 +201,10 @@ CREATE TABLE `shelter` (
 --
 
 INSERT INTO `shelter` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `familyroom_count`) VALUES
-(1, 'shelter', '789', '789', '789', 2);
-INSERT INTO `Shelter` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `familyroom_count`) VALUES 
-('3', 'shelter', 'shelter', '4', 'abd', '10'),
-('2', 'shelter', 'good and clean', '3', 'not many', '20');
+(1, 'shelter', '789', '789', '789', 2),
+(2, 'shelter', 'good and clean', '3', 'not many', 20),
+(3, 'shelter', 'shelter', '4', 'abd', 10);
+
 -- --------------------------------------------------------
 
 --
@@ -204,10 +226,10 @@ CREATE TABLE `site` (
 --
 
 INSERT INTO `site` (`site_id`, `name`, `phone_number`, `street_address`, `city`, `state`, `zipcode`) VALUES
-(1, 'starbuck', '6467092083', 'City Hall', 'San Francisco', 'CA', 98001);
-INSERT INTO `site` (`site_id`, `name`, `phone_number`, `street_address`, `city`, `state`, `zipcode`) VALUES
-(2, 'shelter', '45678123', 'Poplar', 'San Francisco', 'CA', 12345);
+(1, 'starbuck', '6467092083', 'City Hall', 'San Francisco', 'CA', 98001),
+(2, 'shelter', '45678123', 'Poplar', 'San Francisco', 'CA', 12345),
 (3, 'foodbank', '12345678', 'reed', 'sunnyvale', 'CA', 94086);
+
 -- --------------------------------------------------------
 
 --
@@ -247,11 +269,13 @@ CREATE TABLE `user` (
   `site_id` int(16) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table `waitlist`
+--
+-- Dumping data for table `user`
+--
 
-INSERT INTO `user` (`username`, `email`, `password`, `first_name`, `last_name`, `site_id`) VALUES 
-('MJ', 'mj@gmail.com', 'MJ123', 'Mark', 'Jacob', '3');
-('Jack', 'jack@gmail.com', 'JackAll', 'Jack', 'Miller', '2');
+INSERT INTO `user` (`user_id`, `username`, `email`, `password`, `first_name`, `last_name`, `site_id`) VALUES
+(1, 'MJ', 'mj@gmail.com', 'MJ123', 'Mark', 'Jacob', 3),
+(2, 'Jack', 'jack@gmail.com', 'JackAll', 'Jack', 'Miller', 2);
 
 -- --------------------------------------------------------
 
@@ -272,9 +296,9 @@ CREATE TABLE `waitlist` (
 --
 
 INSERT INTO `waitlist` (`site_id`, `service_name`, `client_id`, `waitinglist_ranking`, `datetime`) VALUES
-(1, 'shelter', 1, 1, '2017-04-05 21:50:37'),
-(1, 'shelter', 2, 2, '2017-04-05 21:50:41'),
-(1, 'shelter', 3, 3, '2017-04-05 21:50:45');
+(2, 'shelter', 1, 1, '2017-04-05 21:50:37'),
+(2, 'shelter', 2, 2, '2017-04-05 21:50:41'),
+(2, 'shelter', 3, 3, '2017-04-05 21:50:45');
 
 --
 -- Indexes for dumped tables
@@ -367,27 +391,27 @@ ALTER TABLE `waitlist`
 -- AUTO_INCREMENT for table `bunk`
 --
 ALTER TABLE `bunk`
-  MODIFY `bunk_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `bunk_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `client_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `site`
 --
 ALTER TABLE `site`
-  MODIFY `site_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `site_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(16) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

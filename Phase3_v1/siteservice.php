@@ -79,7 +79,7 @@ if (isset($_POST["addservice"])) {
 
 <?php
 if (isset($_POST["foodbankmainmenu"])) {
-    redirect_to("servicemainmenu.php?servicetype=FoodBank");
+    redirect_to("FBmainmenu.php");
 }
 ?>
 
@@ -104,7 +104,7 @@ if (isset($_POST["soupkitchenmainmenu"])) {
 
 <?php
 if (isset($_POST["logout"])) {
-    redirect_to("home.php");
+    redirect_to("logout.php");
 }
 ?>
 

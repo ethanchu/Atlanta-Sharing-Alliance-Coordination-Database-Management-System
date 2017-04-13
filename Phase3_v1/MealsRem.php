@@ -29,7 +29,7 @@ if($row = mysqli_fetch_assoc($result))
       
     <form action ="Home.php" >
 	<!-- For home page -->
-	<button type="submit">HOME</button> 
+	<button type="submit">Go Back</button>
 	
    <br>
    <br>
@@ -39,7 +39,7 @@ if($row = mysqli_fetch_assoc($result))
    <!-- For Meals remaining -->
    <div>
     <label><b>Meals Remaining : </b></label>
-    <input type="text" value="<?php echo $value1?>" />
+    <input type="text" value="<?php echo $value1?>" readonly/>
   </div>
   <br>
   <br>
@@ -49,11 +49,9 @@ if($row = mysqli_fetch_assoc($result))
   <!-- For donation type -->
   <div>
     <label><b>Donation Type Needed : </b></label>
-     <input type="text" value=" <?php echo $value2?>" /> 
+     <input type="text" value=" <?php echo $value2?>" readonly/>
   </div>
   </div>
-	</form>  
-	
-	
+	</form>
 
-</html>
+<?php include("lib/footer.php"); ?>
