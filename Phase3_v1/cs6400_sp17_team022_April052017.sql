@@ -41,6 +41,12 @@ CREATE TABLE `bunk` (
   `available_count` int(16) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Dumping data for table 'bunk'
+
+INSERT INTO `Bunk` (`bunk_id`, `site_id`, `service_name`, `type`, `count`) VALUES 
+('1', '3', 'shelter', 'male', '20', '10' ),
+('2', '3', 'shelter', 'female', '10', '3' )
+('3', '2', 'shelter', 'mixed', '100','50');
 -- --------------------------------------------------------
 
 --
@@ -75,6 +81,12 @@ CREATE TABLE `foodbank` (
   `service_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Dumping data for table 'foodbank'
+
+INSERT INTO `FoodBank` (`site_id`, `service_name`) VALUES 
+('3', 'foodbank')
+('2', 'foodbank');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +118,18 @@ CREATE TABLE `item` (
   `site_id` int(16) UNSIGNED NOT NULL,
   `service_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- Dumping data for table 'item'
+
+INSERT INTO `Item` (`item_id`, `name`, `unit`, `storage_type`, `expiration_date`, `category`, `sub_category`, `site_id`, `service_name`) VALUES 
+('2', 'Carrot', '2', 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Vegetables', '3', 'Foodbank'),
+('3', 'Cashew', '101', 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', '3', 'Foodbank'),
+('4', 'Pork', '20', 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', '3', 'Foodbank'),
+('5', 'Milk', '30', 'Refrigerated', '2012-01-18 00:00:00', 'Food', 'Dairy/eggs', '3', 'Foodbank'),
+('6', 'Potato', '5', 'Dry Good', '2012-01-18 00:00:00', 'Food', 'Vegetables', '3', 'Foodbank'),
+('7', 'Shrimp', '50', 'Frozen', '2012-01-18 00:00:00', 'Food', 'Meat/seafood', '3', 'Foodbank'),
+('8', 'Almonds', '100', 'Dry Good', '2001-10-19 00:00:00', 'Food', 'nut/grains/beans', '2', 'Foodbank');
 
 -- --------------------------------------------------------
 
@@ -156,7 +180,9 @@ CREATE TABLE `shelter` (
 
 INSERT INTO `shelter` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `familyroom_count`) VALUES
 (1, 'shelter', '789', '789', '789', 2);
-
+INSERT INTO `Shelter` (`site_id`, `service_name`, `description`, `hours_of_operation`, `condition_for_use`, `familyroom_count`) VALUES 
+('3', 'shelter', 'shelter', '4', 'abd', '10'),
+('2', 'shelter', 'good and clean', '3', 'not many', '20');
 -- --------------------------------------------------------
 
 --
@@ -179,7 +205,9 @@ CREATE TABLE `site` (
 
 INSERT INTO `site` (`site_id`, `name`, `phone_number`, `street_address`, `city`, `state`, `zipcode`) VALUES
 (1, 'starbuck', '6467092083', 'City Hall', 'San Francisco', 'CA', 98001);
-
+INSERT INTO `site` (`site_id`, `name`, `phone_number`, `street_address`, `city`, `state`, `zipcode`) VALUES
+(2, 'shelter', '45678123', 'Poplar', 'San Francisco', 'CA', 12345);
+(3, 'foodbank', '12345678', 'reed', 'sunnyvale', 'CA', 94086);
 -- --------------------------------------------------------
 
 --
@@ -218,6 +246,12 @@ CREATE TABLE `user` (
   `last_name` varchar(50) NOT NULL,
   `site_id` int(16) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table `waitlist`
+
+INSERT INTO `user` (`username`, `email`, `password`, `first_name`, `last_name`, `site_id`) VALUES 
+('MJ', 'mj@gmail.com', 'MJ123', 'Mark', 'Jacob', '3');
+('Jack', 'jack@gmail.com', 'JackAll', 'Jack', 'Miller', '2');
 
 -- --------------------------------------------------------
 

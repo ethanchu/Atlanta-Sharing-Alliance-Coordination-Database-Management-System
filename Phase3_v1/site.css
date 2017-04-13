@@ -6,6 +6,7 @@ button {
 	border: none;
 	cursor: pointer;
 	width: 10%;
+	text-align: center;
 }
 
 button: hover {
@@ -15,6 +16,12 @@ button: hover {
 table {
 	color: black;
 	margin: 0 auto;
+	text-align: center;
+}
+
+p{
+	
+	text-align: center;
 }
 
 input[type=text], input[type=password] {
@@ -23,6 +30,18 @@ input[type=text], input[type=password] {
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
+	text-align: center;
+}
+
+input[type=submit]{
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 150px;
+	text-align: center;
 }
 
 <!--
