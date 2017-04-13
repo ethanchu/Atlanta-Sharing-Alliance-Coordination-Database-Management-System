@@ -1,13 +1,14 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
-	include("db_conn.php");
   // $error='';
    //ini_set('display_errors',"1");
    //error_reporting(~0);
    if(isset($_POST['username'])) {
       // username and password sent from form 
       
-      $query = mysql_query("SELECT * FROM user WHERE username = '$_POST[username]' AND password = '$_POST[password]'") or die(mysql_error()); 
-      $row = mysql_fetch_array($query) or die(mysql_error());
+      $query = mysqli_query($connection, "SELECT * FROM user WHERE username = '$_POST[username]' AND password = '$_POST[password]'") or die(mysql_error());
+
+      $row = mysqli_fetch_array($query) or die(mysqli_error());
       
       
       // If result matched $myusername and $mypassword, table row must be 1 row
@@ -17,7 +18,7 @@
       	$_SESSION['username'] = $row['username'];
       	$_SESSION['user_id'] = $row['user_id'];
          
-         header("location: welcome.php");
+         header("location: siteservice.php");
       }else {
       	 $error = "SORRY... YOU ENTERD WRONG ID AND PASSWORD... PLEASE RETRY...";
       }

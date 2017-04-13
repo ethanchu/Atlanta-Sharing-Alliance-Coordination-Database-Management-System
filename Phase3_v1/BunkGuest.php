@@ -1,12 +1,12 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
-include ("db_conn.php");
 
-$query = mysql_query ( "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+$query = mysqli_query ( $connection, "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
 Shelter.hours_of_operation, Shelter.condition_for_use,Bunk.type, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
 INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0;" ) or die ( mysql_error () );
 // $row = mysql_fetch_array($query) or die(mysql_error());
 
-$query1 = mysql_query ( "SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+$query1 = mysqli_query ( $connection,"SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
 Bunk.type, Shelter.familyroom_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
 INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;" ) or die ( mysql_error () );
 ?>
@@ -44,7 +44,7 @@ INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;"
 		</thead>
 		<tbody>
         <?php
-								while ( $row = mysql_fetch_assoc ( $query ) ) {
+								while ( $row = mysqli_fetch_assoc ( $query ) ) {
 									echo "<tr>
               <td>{$row['Name']}</td>
               <td>{$row['Address']}</td>
@@ -79,7 +79,7 @@ INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE familyroom_count>0;"
 		</thead>
 		<tbody>
         <?php
-								while ( $row = mysql_fetch_assoc ( $query1 ) ) {
+								while ( $row = mysqli_fetch_assoc ( $query1 ) ) {
 									echo "<tr>
               <td>{$row['Name']}</td>
               <td>{$row['Address']}</td>

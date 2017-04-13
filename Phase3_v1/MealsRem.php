@@ -1,7 +1,7 @@
+<?php require_once("lib/db_connection.php"); ?>
 <?php
-include("db_conn.php");
 
-$query = mysql_query("select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
+$query = mysqli_query($connection, "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
 UNION
 SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Meat/seafood' OR sub_category='Dairy/eggs' group by category,sub_category
 UNION
@@ -9,7 +9,7 @@ SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/b
 
 //$result = mysql_query($query)or die(mysql_error());
 
-if($row = mysql_fetch_assoc($query))
+if($row = mysqli_fetch_assoc($query))
 	{
 		$value1 = $row['unit'];
 		$value2 = $row['sub_category'];
