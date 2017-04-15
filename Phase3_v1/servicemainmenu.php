@@ -7,14 +7,13 @@
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
-
 <?php
 $servicetype =  $_GET["servicetype"];
 ?>
 
 <?php
 if (isset($_POST["clientsearch"])) {
-    redirect_to("client.php"); // Need to link to Lifeng' part in the future
+    redirect_to("client.php?servicetype=$servicetype"); // Need to link to Lifeng' part in the future
 }
 ?>
 
@@ -48,6 +47,8 @@ if (isset($_POST["bunkroomform"])) {
     redirect_to("BunkUser.php"); //Need to link to bunkroomform
 }
 ?>
+
+
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
 <link rel="stylesheet" type="text/css" href="site.css">
@@ -58,7 +59,7 @@ if (isset($_POST["bunkroomform"])) {
 <h1 style="text-align: center;"> <?php echo $servicetype?>&nbsp; Main Menu </h1>
 <p>
 <table>
-    <form action="servicemainmenu.php" method="POST">
+    <form action="servicemainmenu.php?servicetype=<?php echo $servicetype?>" method="POST">
         <tr>
             <td><input type="submit" name="clientsearch" value="Client Search" /></td>
             <td><input type="submit" name="sitesevice" value="Go back to Site Service" /></td>
@@ -69,7 +70,7 @@ if (isset($_POST["bunkroomform"])) {
 
     <p>
     <table>
-    <form action="servicemainmenu.php" method="POST">
+    <form action="servicemainmenu.php?servicetype=<?php echo $servicetype?>" method="POST">
             <tr><th><input type="submit" name="itemsearch" value="Items Search/Edit" /></th></tr>
             <tr><th><input type="submit" name="requeststatusreport" value="Request Status Report" /></th></tr>
         <?php
