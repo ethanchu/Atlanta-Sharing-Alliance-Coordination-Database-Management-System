@@ -83,24 +83,24 @@ if (!$result) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title>View/Edit Waitlist</title>
 </head>
 
 <div class="center">
-<h1> View/Edit Waitlist </h1>
+<h1 style="text-align: center"> View/Edit Waitlist </h1>
 <p>
 <table>
     <form action="editwaitlist.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnsheltermainmenu" value="Go back to Shelter Main Menu" /></td>
+            <td><input style="width: 200px" type="submit" name="returnsheltermainmenu" value="Go back to Shelter Main Menu" /></td>
         </tr>
     </form>
 </table>
 </p>
 
 <p>
-    <table>
+    <table border="1">
         <tr>
             <th> Client ID </th>
             <th> Client Name </th>
@@ -137,12 +137,13 @@ if (!$result) {
     </table>
 </p>
 
-<h4> Add Waitlist </h4>
+<h4 style="text-align:center; margin-top:30px"> Add Waitlist </h4>
 <p>
-    <table>
+    <table border="1">
         <tr>
             <th> Client ID </th>
             <th> Waitlist Ranking </th>
+            <th> Action </th>
         </tr>
 
         <tr>

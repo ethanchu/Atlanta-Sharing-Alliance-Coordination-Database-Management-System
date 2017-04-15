@@ -1,11 +1,15 @@
 <?php require_once("lib/db_connection.php"); ?>
 
 <html> 
-    <title>Client Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css"
-    <body>
+<head>
+<link rel="stylesheet" type="text/css" href="site.css">
+
+<title>Client Report</title>
+</head>
+<body>
     Welcome to Atlanta Sharing Alliance Coordination System!<br>
-    Please enter new client information below!<br>
+    <br>
+    <div style="text-align: center; margin-top:50px"> Please enter new client information below!</div><br>
 
     <?php   
                 
@@ -84,10 +88,10 @@
     <div id="frm1"> 
         <form action ="" method = "POST">
  
-                Enter new name<input type="text" name="newname" />
-                     <input type="submit" id = "modname" name="modname" value = "update name" />
-               <br>Enter new ID description<input type="text" name="newdescription" />
-                    <input type="submit" id = "modID" name="modID" value = "update ID" />
+                <div style="text-align: center; margin-left: 50">    Enter new name: <input  type="text" name="newname" /> 
+                     <input style="margin-left: 30;" type="submit" id = "modname" name="modname" value = "update name" /></div>
+               <br><div style="text-align: center;">Enter new ID description: <input type="text" name="newdescription" />
+                    <input style="margin-left: 20;" type="submit" id = "modID" name="modID" value = "update ID" /></div>
             
         </form>  
         <?php 
@@ -111,6 +115,6 @@
 </div> 
 
         
-<a href="client.php">Go back to Client</a>
+<div style="text-align: center;"> <a href="client.php">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>

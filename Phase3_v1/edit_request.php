@@ -1,13 +1,10 @@
-<!--
- * Created by IntelliJ IDEA.
- * User: mjnchen
- * Date: 4/8/17
- * Time: 12:42 AM
-// Tested, seem to work
-// Haven't tested return to site service page
-// Edit requests (site service)
--->
-
+/**
+* Created by IntelliJ IDEA.
+* User: mjnchen
+* Date: 4/8/17
+* Time: 12:42 AM
+*/
+// May not be needed?
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -46,30 +43,32 @@ if (isset($_POST['cancel_request'])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
-<title> Cancel Request</title>
-</head>
-<h1> Cancel Request </h1>
 
+<title>Cancel Request</title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<h4 style="text-align: center"> Cancel Request </h4>
+<p>
 <table>
     <form action="cancel_request.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnviewrequest" value="Go back to View Requests Page" /></td>
+            <td><input type="submit" name="returnviewrequest" value="Go back to View Requests Page" style="width:200px;"/></td>
         </tr>
     </form>
 </table>
+</p>
 
 <div>
-    <form action=<?php echo $link; ?> method="POST">
+    <form action=<?php echo $link; ?>  method="POST">
         <p>Cancel?
-            <select name="choice">
+            <select name="choice" style="margin-left:30px;">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </p>
-        <input type=submit name="cancel_request" value = "Confirm">
+       <div style="text-align: center"> <input type="submit" name="cancel_request" value="Confirm" /></div>
     </form>
-
 </div>
 
 <?php include("lib/footer.php"); ?>

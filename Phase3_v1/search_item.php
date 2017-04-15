@@ -1,12 +1,10 @@
-<!--
+/**
 * Created by IntelliJ IDEA.
 * User: mjnchen
 * Date: 4/8/17
 * Time: 12:42 AM
-// Tested, should be OK
-// Request item part not done
--->
-
+*/
+// Needs help
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -50,20 +48,24 @@ if (!$searchResult) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
-<title>Search Items</title>
-</head>
-<body>
-<div>
-    <h1> Search Items </h1>
-    <table>
-        <form action="search_item.php" method="POST">
-            <tr>
-                <td><input type="submit" name="returnmainmenu" value="Go back to Main Menu" /></td>
-            </tr>
-        </form>
-    </table>
 
+<title>Search Item</title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<h4 style="text-align:center"> Search Item </h4>
+<p>
+<table>
+    <form action="search_item.php" method="POST">
+        <tr>
+            <td><input type="submit" name="returnmainmenu" value="Go back to Main Menu" /></td>
+        </tr>
+    </form>
+</table>
+</p>
+
+<div>
+    
     <form action='search_item.php' method=post>
         <?php
         // Get list of foodbanks
@@ -122,7 +124,6 @@ if (!$searchResult) {
 
         echo "</table>";
     ?>
-
 </div>
 
 <?php include("lib/footer.php"); ?>

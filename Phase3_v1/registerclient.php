@@ -36,37 +36,37 @@ if(isset($_POST['submit'])){
 ?>
 <html> 
 	<title>Client Registration</title>
-	<link rel="stylesheet" type="text/css" href="style.css"
-    <body>Welcome to Atlanta Sharing Alliance Coordination System!
+	<link rel="stylesheet" type="text/css" href="site.css">
+    <body>Welcome to Atlanta Sharing Alliance Coordination System!<br>
+   <div style="text-align: center; margin-top: 50;"> Please enter new client information below!</div><br>
 
-  	Please enter new client information below!
     <div id="frm1">	
         <form action ="registerclient.php" method = "POST">
-        <table>                             
+        <table style="margin-top: 20;">                             
             <tr>
-                <td class="item_label">name</td>
-                <td><input type="text" name="nname" /></td>
+                <td style="text-align:left;" class="item_label">Name:</td>
+                <td><input style="width:150px;" type="text" name="nname" /></td>
             </tr>
             <tr>
-                <td class="item_label">head of household</td>
-                <td><input type="text" name="nhead_of_household" /></td>
+                <td style="text-align:left;" class="item_label">Head of Household:</td>
+                <td><input style="width:150px;" type="text" name="nhead_of_household" /></td>
             </tr>
             <tr>
-                <td class="item_label">phone number</td>
-                <td><input type="text" name="nphone_number" /></td>
+                <td style="text-align:left;" class="item_label">Phone Number:</td>
+                <td><input style="width:150px;" type="text" name="nphone_number" /></td>
             </tr>
             <tr>
-                <td class="item_label">ID description</td>
-                <td><input type="text" name="ndescription" /></td>
+                <td style="text-align:left;" class="item_label">ID Description:</td>
+                <td><input style="width:150px;" type="text" name="ndescription" /></td>
             </tr>
                                     
                                     
         </table>
            
             <p> 
-                <input type="submit" id = "submit" name="submit" value = "register" />
+                <input type="submit" id = "submit" name="submit" value = "REGISTER" />
             </p>
-            <a href="client.php">Go back to Client</a>  
+            <div style="text-align: center;"> <a href="client.php">Go back to Client</a></div> 
         </form> 
         <?php 
             if( isset($_SESSION['Error1']) ){

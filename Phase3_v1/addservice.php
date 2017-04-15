@@ -82,7 +82,7 @@ if (isset($_POST["returnsiteservice"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title>Add Service</title>
 </head>
 <div class="center">
@@ -132,15 +132,15 @@ if (isset($_POST["returnsiteservice"])) {
             </select>
         </p>
         <p>Description:
-            <input type="text" name="description" value="" />
+            <input style="margin-left:60px;" type="text" name="description" value="" />
         </p>
         <p>Hour of Operation:
-            <input type="text" name="hourofoperation" value="" />
+            <input style="margin-left:10px;" type="text" name="hourofoperation" value="" />
         </p>
         <p>Condition for use:
-            <input type="text" name="conditionforuse" value="" />
+            <input style="margin-left:10px;" type="text" name="conditionforuse" value="" />
         </p>
-        <input type="submit" name="addservice" value="Add Service" />
+        <div  style="text-align: center;"><input type="submit" name="addservice" value="Add Service" /></div>
     </form>
 </div>
 </div>

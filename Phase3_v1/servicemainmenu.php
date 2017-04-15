@@ -26,15 +26,13 @@ if (isset($_POST["sitesevice"])) {
 
 <?php
 if (isset($_POST["itemsearch"])) {
-    // redirect_to("itemsearch.php"); // Need to link to itemsearch
-    redirect_to("search_item.php"); // Need to link to itemsearch
+    redirect_to("itemsearch.php"); // Need to link to itemsearch
 }
 ?>
 
 
 <?php
 if (isset($_POST["requeststatusreport"])) {
-    // redirect_to("requeststatusreport.php"); //Need to link to itemsearch
     redirect_to("view_request.php"); //Need to link to itemsearch
 }
 ?>
@@ -52,12 +50,12 @@ if (isset($_POST["bunkroomform"])) {
 ?>
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title><?php echo $servicetype?>&nbsp; Main Menu</title>
 </head>
 
 <p class="center">
-<h1> <?php echo $servicetype?>&nbsp; Main Menu </h1>
+<h1 style="text-align: center;"> <?php echo $servicetype?>&nbsp; Main Menu </h1>
 <p>
 <table>
     <form action="servicemainmenu.php" method="POST">
@@ -78,7 +76,7 @@ if (isset($_POST["bunkroomform"])) {
         if ($servicetype == "Shelter") {
             ?>
             <tr><th><input type="submit" name="waitlist" value="View/Edit Waitlist" /></th></tr>
-            <tr><th><input type="submit" name="bunkroomform" value="View/Edit Available Bunks/Rooms Form--For User" /></th></tr>
+            <tr><th><input style="width: 300px;" type="submit" name="bunkroomform" value="View/Edit Available Bunks/Rooms Form--For User" /></th></tr>
             <?php
         }
         ?>

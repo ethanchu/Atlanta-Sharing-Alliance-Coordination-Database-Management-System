@@ -31,7 +31,7 @@
 
 <!-- For Request Status Report page -->
 <div class="container">
-<a href="view_report.php"><button type="submit">Request Status Report</button></a>
+<a href="view_request.php"><button type="submit">Request Status Report</button></a>
 </div>
 
 

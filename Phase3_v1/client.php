@@ -4,7 +4,7 @@
 <html>
 <head> 
 	<title>Client Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css"
+	 <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 <body>
 	Welcome to Atlanta Sharing Alliance Coordination System!

@@ -1,13 +1,10 @@
-<!--
- * Created by IntelliJ IDEA.
- * User: mjnchen
- * Date: 4/8/17
- * Time: 12:42 AM
-// Tested, should be OK
-// Haven't tested return to site service page
-// View requests (site service)
--->
-
+/**
+* Created by IntelliJ IDEA.
+* User: mjnchen
+* Date: 4/8/17
+* Time: 12:42 AM
+*/
+// Need test
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -34,18 +31,22 @@ if (!$result) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
-<title> Requests Status</title>
-</head>
-<h1> Requests Status </h1>
 
+<title>View Requests</title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<h4 style="text-align:center"> View Requests </h4>
+<p>
 <table>
     <form action="view_request.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnsiteservice" value="Go back to Site Service Page" /></td>
+            <td><input type="submit" name="returnsiteservice" value="Go back to Site Service Page" style="width:200px"/></td>
         </tr>
     </form>
 </table>
+</p>
+
 
 <div>
 
@@ -84,5 +85,6 @@ if (!$result) {
     ?>
 
 </div>
+
 
 <?php include("lib/footer.php"); ?>

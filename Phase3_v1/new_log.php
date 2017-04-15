@@ -2,10 +2,10 @@
 
 <html> 
     <title>Client Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css"
+   <link rel="stylesheet" type="text/css" href="site.css">
     <body>
     Welcome to Atlanta Sharing Alliance Coordination System!<br>
-    Please enter new client log information below!<br>
+     <div style="text-align: center; margin-top: 50;"> Please enter new client information below!</div><br>
 
     <?php   
                 
@@ -40,21 +40,21 @@
         <table>                             
 
             <tr>
-                <td class="item_label">service site id</td>
-                <td><input type="text" name="lsite" /></td>
+                <td style="text-align: left;" class="item_label">Service Site-id : </td>
+                <td><input style="width: 150px;" type="text" name="lsite" /></td>
             </tr>
             <tr>
-                <td class="item_label">service description</td>
-                <td><input type="text" name="ldescription" /></td>
+                <td style="text-align: left;" class="item_label">Service Description : </td>
+                <td><input style="width: 150px;" type="text" name="ldescription" /></td>
             </tr>   
             <tr>
-                <td class="item_label">additional note</td>
-                <td><input type="text" name="lnote" /></td>
+                <td style="text-align: left;" class="item_label">Additional Note : </td>
+                <td><input style="width: 150px;" type="text" name="lnote" /></td>
             </tr>                     
                                     
         </table>
             <p> 
-                <input type="submit" id = "add" name="add" value = "add log entry" />
+                <input type="submit" id = "add" name="add" value = "ADD LOG ENTRY" />
             </p>
         </form>  
         <?php 
@@ -79,7 +79,7 @@
                                   
 </div> 
 
-        <a href="client.php">Go back to Client</a>
+        <div style="text-align: center;"><a href="client.php">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

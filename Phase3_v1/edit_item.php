@@ -1,11 +1,5 @@
-<!--
- * Created by IntelliJ IDEA.
- * User: mjnchen
- * Date: 4/8/17
- * Time: 12:42 AM
- // Tested, Should be OK
- -->
 
+// Need further work
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -46,20 +40,24 @@ if (isset($_POST['edit_item'])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+
 <title>Edit Item</title>
+<link rel="stylesheet" type="text/css" href="site.css">
 </head>
-<h1> Edit Item </h1>
+
+<h4 style="text-align: center; margin-top:50px;"> Edit Item </h4>
+<p>
 <table>
     <form action="edit_item.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" style="width:200px;"/></td>
         </tr>
     </form>
 </table>
+</p>
 
 <div>
-    <form action='edit_item.php' method=post>
+    <form action='edit_item.php' method="post">
         <?php
         // Get list of foodbanks
         $query = "SELECT item_id, `name` FROM `item` WHERE site_id = $SiteID";
@@ -79,9 +77,9 @@ if (isset($_POST['edit_item'])) {
         }
         ?>
 
-        Unit: <input type="number" name="Unit" value="" />
+        <p>Unit: <input type="number" name="Unit" value="" /></p>
 
-        <input type="submit" name="edit_item" >
+        <div style="text-align: center;"> <input type="submit" name="edit_item"  value="Edit Item"></div>
 
     </form>
 </div>

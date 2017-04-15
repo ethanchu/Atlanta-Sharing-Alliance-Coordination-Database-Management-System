@@ -2,7 +2,7 @@
 
 <html> 
 	<title>Search client</title>
-	<link rel="stylesheet" type="text/css" href="style.css"
+	<link rel="stylesheet" type="text/css" href="site.css">
     <body>
   	Welcome to Atlanta Sharing Alliance Coordination System!
     <table>
@@ -47,7 +47,7 @@
    		}
     ?>
     </table>
-		<a href="client.php">Go back to Client</a>
+		<div style="text-align: center;"> <a href="client.php">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

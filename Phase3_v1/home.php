@@ -1,4 +1,4 @@
-<?php require_once("lib/db_connection.php"); ?>
+
 <html>
 
 <head>
@@ -21,7 +21,6 @@
 </div>
 </form>
 
-
 	<!-- For Bunk Guest page -->
 <form action ="BunkGuest.php" method="post">
 <div class="container">
@@ -34,7 +33,8 @@
 <div class="container">
 <button type="submit">Meals Remaining</button> 
 </div>
-
 </form>
 
-<?php include("lib/footer.php"); ?>
+</body>
+   
+</html>

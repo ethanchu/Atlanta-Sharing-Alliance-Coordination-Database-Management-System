@@ -2,21 +2,25 @@
 <?php
 
 
-$query = "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Vegetables' group by category,sub_category
+$date = new DateTime ('now');
+$datef = $date->format('Y-m-d H:i:s');
+
+$query = "select sub_category,unit from (SELECT sub_category,sum(unit) as unit FROM Item WHERE  sub_category='Vegetables' and expiration_date >= '$datef' group by category,sub_category
 UNION
-SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='Meat/seafood' OR sub_category='Dairy/eggs' group by category,sub_category
+SELECT sub_category,sum(unit) as unit FROM Item WHERE (sub_category='Meat/seafood' OR sub_category='Dairy/eggs') and expiration_date >= '$datef' group by category,sub_category
 UNION
-SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' group by category,sub_category) abc order by unit limit 1;";
+SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' and expiration_date >= '$datef' group by category,sub_category ) abc order by unit limit 1;";
 
 $result = mysqli_query($connection, $query);
-
+$unit = 0;
+$sub_category = "";
 
 if($row = mysqli_fetch_assoc($result))
-	{
-		$value1 = $row['unit'];
-		$value2 = $row['sub_category'];
-		
-	}
+{
+	$unit= $row['unit'];
+	$sub_category = $row['sub_category'];
+	
+}
 ?>
 <html>
    
@@ -29,7 +33,7 @@ if($row = mysqli_fetch_assoc($result))
       
     <form action ="Home.php" >
 	<!-- For home page -->
-	<button type="submit">Go Back</button>
+	<button type="submit">HOME</button> 
 	
    <br>
    <br>
@@ -39,7 +43,7 @@ if($row = mysqli_fetch_assoc($result))
    <!-- For Meals remaining -->
    <div>
     <label><b>Meals Remaining : </b></label>
-    <input type="text" value="<?php echo $value1?>" readonly/>
+    <input type="text" value="<?php echo $unit ?>" />
   </div>
   <br>
   <br>
@@ -49,9 +53,10 @@ if($row = mysqli_fetch_assoc($result))
   <!-- For donation type -->
   <div>
     <label><b>Donation Type Needed : </b></label>
-     <input type="text" value=" <?php echo $value2?>" readonly/>
+     <input type="text" value=" <?php echo $sub_category ?>" /> 
   </div>
   </div>
-	</form>
+	</form>  
+</html>
 
 <?php include("lib/footer.php"); ?>

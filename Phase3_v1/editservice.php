@@ -75,7 +75,7 @@ $preinfo = mysqli_fetch_assoc($result);
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title >Edit Service</title>
 </head>
 

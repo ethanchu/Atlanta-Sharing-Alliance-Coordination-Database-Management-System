@@ -2,20 +2,22 @@
 
 <html> 
 	<title>Client Report</title>
-	<link rel="stylesheet" type="text/css" href="style.css"
+	<link rel="stylesheet" type="text/css" href="site.css">
     <body>
   	Welcome to Atlanta Sharing Alliance Coordination System!
          <div class="profile_section">
-            <div class="subtitle">Client Information</div>  
-            <table>
-                <tr>
-                    <td class="heading">client_id</td>
-                    <td class="heading">phone_number</td>
-                    <td class="heading">head_of_household</td>
-                    <td class="heading">name</td>
-                    <td class="heading">ID description</td>
-                    
-                </tr>                           
+         <div style="text-align:center; color: #4CAF50;">Client Information</div>  
+         <table border="1">
+			<thead>
+			<tr>
+			<th>client_id</th>
+			<th>phone_number</th>
+			<th>head_of_household</th>
+			<th>name</th>
+			<th>ID description</th>
+            </tr>    
+            </thead>
+	                        
                         
             <?php   
                 $request_id1 = $_GET['selectID']; 
@@ -39,16 +41,16 @@
             </table>                        
         </div> 
 
-         <div class="profile_section">
-            <div class="subtitle">Client Log Information</div>  
-            <table>
+          <div class="profile_section">
+            <div style="text-align:center; margin-top:100px; color: #4CAF50;">Client Log Information</div>  
+            <table border="1">
                 <tr>
-                    <td class="heading">client_id</td>
+                    <td>client_id</td>
 
-                    <td class="heading">datetime</td>
-                    <td class="heading">site_id</td>
-                    <td class="heading">service description</td>
-                    <td class="heading">field_modified</td>
+                    <td>datetime</td>
+                    <td>site_id</td>
+                    <td>service description</td>
+                    <td>field_modified</td>
                     <td><a href="new_log.php?logID=<?php echo $_GET['selectID'] ?> ">add new log</a></td>
                     
                 </tr>                           
@@ -75,7 +77,7 @@
             ?>                
             </table>                        
         </div>         
-        <a href="client.php">Go back to Client</a>
+        <div style="text-align:center; margin-top:50px;"> <a href="client.php">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

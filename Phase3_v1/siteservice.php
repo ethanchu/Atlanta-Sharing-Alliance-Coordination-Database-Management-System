@@ -110,12 +110,12 @@ if (isset($_POST["logout"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title>Site Service</title>
 </head>
 
 <div class="center">
-<h1> Site Service </h1>
+<h1 style="text-align:center"> Site Service </h1>
 <p>
     <table>
         <form action="siteservice.php" method="POST">
@@ -133,16 +133,18 @@ if (isset($_POST["logout"])) {
     <?php
           if(isset($foodbank)) {
        ?>
+       <tr><td>
         <form action="siteservice.php" method="POST">
-            <tr><input type="submit" name="foodbankmainmenu" value="Foodbank Mainmenu" /></tr> </form>
-       <tr> edit </tr>
+            <input style="text-align: center;" type="submit" name="foodbankmainmenu" value="Foodbank Mainmenu" /> </form></td>
+       <td> edit </td>
               <?php
                 if ($servicenum > 1) {
                     ?>
-              <tr> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("foodbank"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></tr>
+              <td> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("foodbank"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></td>
               <?php
                 }
                 ?>
+             </tr>
         <?php
         }
     ?>
@@ -152,16 +154,18 @@ if (isset($_POST["logout"])) {
     <?php
     if(isset($foodpantry)) {
         ?>
+        <tr><td>
         <form action="siteservice.php" method="POST">
-            <tr><input type="submit" name="foodpantrymainmenu" value="Foodpantry Mainmenu" /> </tr></form>
-        <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("foodpantry"); ?>" > edit </a></tr>
+            <input  type="submit" name="foodpantrymainmenu" value="Foodpantry Mainmenu" /> </form></td>
+        <td> <a href="editservice.php?servicetype=<?php echo rawurlencode("foodpantry"); ?>" > edit </a></td>
         <?php
         if ($servicenum > 1) {
             ?>
-            <tr> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("foodpantry"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></tr>
+            <td> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("foodpantry"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></td>
             <?php
         }
         ?>
+        </tr>
         <?php
         }
     ?>
@@ -171,16 +175,18 @@ if (isset($_POST["logout"])) {
     <?php
     if(isset($shelter)) {
         ?>
+        <tr><td>
         <form action="siteservice.php" method="POST">
-            <tr><input type="submit" name="sheltermainmenu" value="Shelter Mainmenu" /></tr></form>
-        <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("shelter"); ?>" > edit </a></tr>
+            <input type="submit" name="sheltermainmenu" value="Shelter Mainmenu" /></form></td>
+        <td style="text-align: center;"> <a href="editservice.php?servicetype=<?php echo rawurlencode("shelter"); ?>" > edit </a></td>
         <?php
         if ($servicenum > 1) {
             ?>
-            <tr> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("shelter"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></tr>
+            <td style="text-align: center;"> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("shelter"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></td>
             <?php
         }
         ?>
+        </tr>
         <?php
     }
     ?>

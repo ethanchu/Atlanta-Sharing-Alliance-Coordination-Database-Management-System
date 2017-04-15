@@ -1,16 +1,13 @@
-<!--
+/**
  * Created by IntelliJ IDEA.
  * User: mjnchen
  * Date: 4/8/17
  * Time: 12:42 AM
-// Tested, should be OK
-// Need highlight inventory shortfalls
-// View outstanding requests (foodbank)
--->
-
+ */
+// Needs test
+// View outstanding requests
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
-
 <?php
 // Find site_id of foodbank
 $SiteID = $_SESSION['site_id'];
@@ -51,18 +48,22 @@ if (!$result) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
-<title>View Outstanding Requests</title>
-</head>
-<h1> View Outstanding Requests </h1>
 
+<title>View Outstanding Requests</title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<h4 style="text-align:center" > View Outstanding Requests </h4>
+<p>
 <table>
     <form action="view_report.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" style="width:250px"/></td>
         </tr>
     </form>
 </table>
+</p>
+
 
 <div>
     <form action="view_report.php" method="POST">

@@ -1,15 +1,11 @@
-<!--
- * Created by IntelliJ IDEA.
- * User: mjnchen
- * Date: 4/8/17
- * Time: 12:42 AM
-// Tested, should be OK
-// Updating database not work (fixed, need specific link in action part)
-// Need also update inventory
-// Parsing GET seems to work for now
-// Edit outstanding requests (foodbank)
--->
-
+/**
+* Created by IntelliJ IDEA.
+* User: mjnchen
+* Date: 4/8/17
+* Time: 12:42 AM
+*/
+// Need test
+// How to deal with ItemID
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -72,42 +68,37 @@ if (isset($_POST["edit_report"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
-<title>Edit Outstanding Requests</title>
-</head>
-<h1> Edit Outstanding Requests </h1>
 
+<title>Edit Outstanding Requests</title>
+<link rel="stylesheet" type="text/css" href="site.css">
+</head>
+
+<h4 style="text-align:center; margin-top:20px;"> Edit Outstanding Request </h4>
+<p>
 <table>
     <form action="edit_report.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnviewreport" value="Go back to Outstanding Requests Page" /></td>
+            <td><input type="submit" name="returnviewreport" value="Go back to Outstanding Requests Page" style="width:250px;" /></td>
         </tr>
     </form>
 </table>
+</p>
 
 <div>
-    <form action=<?php echo $link; ?> method="POST">
-        <p>Number Provide:
-            <input type="number" name="num_provide" value="" />
+    <form action="edit_report.php" method="POST">
+        <p>Number Provided:
+            <input style="margin-left:10px;" type="text" name="num_provide" value="" />
         </p>
         <p>Status:
-            <select name="status">
+
+            <select name="status" style="margin-left:80px;">
                 <option value="closed">Closed</option>
                 <option value="pending">Pending</option>
             </select>
         </p>
-        <input type=submit name="edit_report">
+        </p>
+       <div style="text-align:center;"> <input type="submit" name="edit_report" value="Edit Report" /></div>
     </form>
-
-    <?php
-    /*
-    echo $ReqItemID;
-    echo gettype($ReqItemID);
-    echo $ReqUserID;
-    echo gettype($ReqUserID);
-    */
-    // echo $unit['unit'];
-    ?>
 </div>
 
 <?php include("lib/footer.php"); ?>

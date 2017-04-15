@@ -28,7 +28,7 @@ if (isset ( $_SESSION ['user_id'] )) {
    <tbody>
    <?php
    while ( $row = mysqli_fetch_assoc ( $result) ) {
-									echo "<form action=\"updateBunk.php\" method=\"post\"><tr>
+		echo "<form action=\"updateBunk.php\" method=\"post\"><tr>
               <td>{$row['type']}</td>
               <td>{$row['count']}</td>
               <td><input style=\"width:70px;\" name=\"available_count\" type=\"text\" value=\"{$row['available_count']}\" /></td>
@@ -36,8 +36,9 @@ if (isset ( $_SESSION ['user_id'] )) {
               
             </tr></form>\n";
 								}
-								?>
+	?>
    </tbody>
    </table>
+   </body>
 
 <?php include("lib/footer.php"); ?>
