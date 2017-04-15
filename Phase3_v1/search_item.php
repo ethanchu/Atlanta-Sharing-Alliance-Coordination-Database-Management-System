@@ -19,7 +19,7 @@ $UserID = $_SESSION['user_id'];
 
 <?php
 if (isset($_POST["returnmainmenu"])) {
-    redirect_to("Mainmenu.php"); // Temp direct to Main menu
+    redirect_to("siteservice.php"); // Temp direct to Main menu
 }
 ?>
 

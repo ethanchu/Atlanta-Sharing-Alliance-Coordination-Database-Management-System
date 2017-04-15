@@ -19,7 +19,7 @@ $UserID = intval($_SESSION['user_id']);
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("servicemainmenu.php");
+    redirect_to("siteservice.php");
 }
 ?>
 

@@ -22,7 +22,7 @@ $link = "request_item.php?reqitemid=".$ReqItemID;
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("servicemainmenu.php");
+    redirect_to("siteservice.php");
 }
 ?>
 
