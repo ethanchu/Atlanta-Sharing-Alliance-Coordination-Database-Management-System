@@ -19,7 +19,7 @@ $UserID = $_SESSION['user_id'];
 
 <?php
 if (isset($_POST["returnmainmenu"])) {
-    redirect_to("Mainmenu.php"); // Temp direct to Main menu
+    redirect_to("siteservice.php"); // Temp direct to Main menu
 }
 ?>
 
@@ -60,7 +60,7 @@ if (!$searchResult) {
     <table>
         <form action="search_item.php" method="POST">
             <tr>
-                <td><input type="submit" name="returnmainmenu" value="Go back to Main Menu" /></td>
+                <td><input type="submit" name="returnmainmenu" value="Go back to Site Service" /></td>
             </tr>
         </form>
     </table>
