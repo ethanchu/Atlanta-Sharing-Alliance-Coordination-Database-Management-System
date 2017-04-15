@@ -56,5 +56,38 @@ LOGIN, VIEW/MODIFY BUNK,MEALS REMAINING:
 	SELECT sub_category,sum(unit) as unit FROM Item WHERE sub_category='nut/grains/beans' and expiration_date >= '$datef' group by category,sub_category ) abc order by unit limit 1;";
 
 5.updateBunk
-	$query = "update Bunk set available_count = $_POST[available_count] where bunk_id = $_POST[id] "; 	
+	$query = "update Bunk set available_count = $_POST[available_count] where bunk_id = $_POST[id] ";
 
+Edit/View Service and Waitlist:
+
+1.siteservice.php:
+    $query = "SELECT `site_id` FROM `user` WHERE user_id =$userid";
+    $query = "SELECT * FROM `foodbank` WHERE site_id = $currentsession";
+    $query = "SELECT * FROM `foodpantry` WHERE site_id = $currentsession";
+    $query = "SELECT * FROM `shelter` WHERE site_id = $currentsession";
+    $query = "SELECT * FROM `soupkitchen` WHERE site_id = $currentsession"
+
+2 editservice.php:
+    soupkitchen:
+     $query = "UPDATE $servicetype SET description = '$description', hours_of_operation = '$hoursofoperation', condition_for_use = '$conditionforuse', seat_capacity = '$seatcapacity', seat_available = '$seatavailable' WHERE site_id = $currentsession AND service_name = '$servicetype'";
+   shelter:
+     $query = "UPDATE $servicetype SET description = '$description', hours_of_operation = '$hoursofoperation', condition_for_use = '$conditionforuse', familyroom_count = '$familyroom_count' WHERE site_id = $currentsession AND service_name = '$servicetype'";
+    foodbank & foodpantry:
+     $query = "UPDATE $servicetype SET description = '$description', hours_of_operation = '$hoursofoperation', condition_for_use = '$conditionforuse' WHERE site_id = $currentsession AND service_name = '$servicetype'";
+    Retrieve the current services that current sites have:
+     $query = "SELECT * FROM `$servicetype` WHERE Site_ID = $currentsession";
+
+3.addservice.php:
+    foodbank:
+     $query = "INSERT INTO foodbank (site_id , service_name)VALUES( $currentsession , '{$servicetype}')";
+    soupkitchen & shelter & foodpantry:
+     $query = "INSERT INTO `$servicetype` (site_id , service_name, description, hours_of_operation, condition_for_use) VALUES ( $currentsession , '{$servicetype}', '{$description}','{$hourofoperation}', '{$conditionforuse}')";
+
+4. deleteservice.php:
+    $query = "Delete FROM {$servicetype} WHERE Site_ID = $currentsession AND Service_Name = '{$servicetype}' LIMIT 1";
+
+5. editwaitlist.php:
+    $query = "UPDATE waitlist SET waitinglist_ranking = $waitinglist_ranking WHERE site_id = $currentsession AND service_name = 'shelter' AND 	client_id = $client_id";
+    $query = "Delete FROM waitlist WHERE site_id = $currentsession AND service_name = 'shelter' AND 	client_id = $client_id ";
+    $query = "INSERT INTO waitlist (site_id, service_name, client_id, waitinglist_ranking, datetime) VALUES ($currentsession, 'shelter', $client_id, $waitinglist_ranking, '$date')";
+    $query = "SELECT * FROM waitlist WHERE Site_ID = $currentsession AND service_name = 'shelter' ORDER BY waitinglist_ranking ASC, datetime ASC";
