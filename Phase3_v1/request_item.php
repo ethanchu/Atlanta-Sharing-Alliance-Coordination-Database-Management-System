@@ -1,13 +1,14 @@
-/**
+<!--
 * Created by IntelliJ IDEA.
 * User: mjnchen
 * Date: 4/8/17
 * Time: 12:42 AM
-*/
-// Need test
+// Tested, seems to be OK
 // How to deal with ItemID
+-->
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
+
 <?php
 // Find site_id of foodbank
 $SiteID = $_SESSION['site_id'];
@@ -21,7 +22,7 @@ $link = "request_item.php?reqitemid=".$ReqItemID;
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("siteservice.php");
+    redirect_to("servicemainmenu.php");
 }
 ?>
 
@@ -47,12 +48,13 @@ if (isset($_POST['request_item'])) {
 <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 
-<h4 style="text-align:center"> Request Item </h4>
+<h4 style="text-align:center"> Requests item</h4>
+<body>
 <p>
 <table>
     <form action="request_item.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnsiteservice" value="Go back to Service Page" style="width:200px"/></td>
+            <td><input type="submit" name="returnsiteservice" value="Go back to Service Page" /></td>
         </tr>
     </form>
 </table>
@@ -61,9 +63,9 @@ if (isset($_POST['request_item'])) {
 <div>
     <form action=<?php echo $link; ?> method="POST">
         <p>Number Request:
-            <input type="text" name="NumRequest" value="" />
+            <input type="number" name="NumRequest" value="" />
         </p>
-      <div style="text-align:center" > <input type="submit" name="request_item" value="Request Item" /></div>
+        <input type="submit" name="request_item" value="Request Item" />
     </form>
 </div>
 

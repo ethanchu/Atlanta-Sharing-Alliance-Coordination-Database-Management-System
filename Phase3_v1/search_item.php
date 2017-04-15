@@ -1,10 +1,12 @@
-/**
+<!--
 * Created by IntelliJ IDEA.
 * User: mjnchen
 * Date: 4/8/17
 * Time: 12:42 AM
-*/
-// Needs help
+// Tested, should be OK
+// Request item part not done
+-->
+
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -17,7 +19,7 @@ $UserID = $_SESSION['user_id'];
 
 <?php
 if (isset($_POST["returnmainmenu"])) {
-    redirect_to("siteservice.php"); // Temp direct to Main menu
+    redirect_to("Mainmenu.php"); // Temp direct to Main menu
 }
 ?>
 
@@ -48,24 +50,21 @@ if (!$searchResult) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
-<title>Search Item</title>
 <link rel="stylesheet" type="text/css" href="site.css">
+<title>Search Items</title>
 </head>
 
-<h4 style="text-align:center"> Search Item </h4>
-<p>
-<table>
-    <form action="search_item.php" method="POST">
-        <tr>
-            <td><input type="submit" name="returnmainmenu" value="Go back to Main Menu" /></td>
-        </tr>
-    </form>
-</table>
-</p>
-
+<h4 style="text-align:center"> Search Items</h4>
+<body>
 <div>
-    
+    <table>
+        <form action="search_item.php" method="POST">
+            <tr>
+                <td><input type="submit" name="returnmainmenu" value="Go back to Main Menu" /></td>
+            </tr>
+        </form>
+    </table>
+
     <form action='search_item.php' method=post>
         <?php
         // Get list of foodbanks
@@ -124,6 +123,7 @@ if (!$searchResult) {
 
         echo "</table>";
     ?>
+
 </div>
 
 <?php include("lib/footer.php"); ?>

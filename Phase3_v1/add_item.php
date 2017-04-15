@@ -1,12 +1,14 @@
-/**
+<!--
  * Created by IntelliJ IDEA.
  * User: mjnchen
  * Date: 4/8/17
  * Time: 12:42 AM
- */
-// Should be OK
+ // Tested, Should be OK
+ -->
+
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
+
 <?php
 // Find site_id of foodbank
 $SiteID = $_SESSION['site_id'];
@@ -43,59 +45,66 @@ if (isset($_POST["add_item"])) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<html>
-<head>
-<title>Add Item</title>
 <link rel="stylesheet" type="text/css" href="site.css">
+<title>Add Item</title>
 </head>
-<h4 style="text-align:center"> Add Item</h4> -->
-
-<p>
+<h4 style="text-align:center"> Add Item</h4>
+<body>
 <table>
     <form action="add_item.php" method="POST">
         <tr>
-            <td><input style= "width:200px;" type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
         </tr>
     </form>
 </table>
-</p>
-<form action="add_item.php" method="POST">
-<table>
-    
-    <tr>
-        <td style="text-align: left;">Item Name:   </td>
-         <td>   <input style= "width:100%;" type="text" name="Name" value="" /></td>
-        </tr>
-        <tr>
-        <td style="text-align: left;">Unit:   </td>
-         <td>   <input style= "width:100%;" type="text" name="Unit" value="" /></td>
-        </tr>
-        <tr>
-        <td style="text-align:left;">Storage Type:   </td>
-         <td>   <select name="StorageType">
+
+<div>
+    <form action="add_item.php" method="POST">
+        <p>Item Name:
+            <input type="text" name="Name" value="" />
+        </p>
+        <p>Unit:
+            <input type="number" name="Unit" value="" />
+        </p>
+        <p>Storage Type:
+            <select name="StorageType">
                 <option value="Dry Good">Dry Good</option>
                 <option value="Refrigerated">Refrigerated</option>
                 <option value="Frozen">Frozen</option>
             </select>
-            </td>
-        </tr>
-        <tr>
-        <td style="text-align: left;">Expiration Date:   </td>
-        <td>    <input style= "width:100%;" type="text" name="ExpirationDate" value="" /></td>
-        </tr>
-        <tr>
-        <td style="text-align: left;">Category:   </td>
-        <td>    <select name="Category">
+        </p>
+        <p>Expiration Date:
+            <input type="date" name="ExpirationDate" value="" />
+        </p>
+        <p>Category:
+            <select name="Category">
                 <option value="Food">Food</option>
                 <option value="Supplies">Supplies</option>
-            </select></td>
-        </tr>
-        <tr>
-        <td style="text-align: left;" >Sub-Category:   </td>
-         <td>   
-          <?php
+            </select>
+        </p>
+        <p>Sub-Category:
+            <?php
                 $cat = $_POST["Category"];
-                echo '<select name="SubCategory">
+                /*
+                if ($cat == 'Food') {
+                    echo '<select name="SubCategory">
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="nuts/grains/beans">nuts/grains/beans</option>
+                            <option value="Meat/seafood">Meat/seafood</option>
+                            <option value="Dairy/eggs">Dairy/eggs</option>
+                            <option value="Sauce/Condiment/Seasoning">Sauce/Condiment/Seasoning</option>
+                            <option value="Juice/Drink">Juice/Drink</option>
+                          </select>';
+                } else {
+                    echo '<select name="SubCategory">
+                            <option value="Personal hygiene">Personal hygiene</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Shelter">Shelter</option>
+                            <option value="other">other</option>
+                          </select>';
+                }
+                */
+            echo '<select name="SubCategory">
                       <option value="Vegetables">Vegetables</option>
                       <option value="nuts/grains/beans">nuts/grains/beans</option>
                       <option value="Meat/seafood">Meat/seafood</option>
@@ -107,13 +116,10 @@ if (isset($_POST["add_item"])) {
                       <option value="Shelter">Shelter</option>
                       <option value="other">other</option>
                  </select>';
-                ?>
-         </td>
-        </tr>
-         
-        </table>
-      <div style="text-align:center;"> <input  type="submit" name="add_item" value="Add Item" /> </div> 
-   </form>
-
+            ?>
+        </p>
+        <input type="submit" name="add_item" value="Add Item" />
+    </form>
+</div>
 
 <?php include("lib/footer.php"); ?>

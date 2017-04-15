@@ -1,10 +1,13 @@
-/**
-* Created by IntelliJ IDEA.
-* User: mjnchen
-* Date: 4/8/17
-* Time: 12:42 AM
-*/
-// Need test
+<!--
+ * Created by IntelliJ IDEA.
+ * User: mjnchen
+ * Date: 4/8/17
+ * Time: 12:42 AM
+// Tested, should be OK
+// Haven't tested return to site service page
+// View requests (site service)
+-->
+
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
 
@@ -16,7 +19,7 @@ $UserID = intval($_SESSION['user_id']);
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("siteservice.php");
+    redirect_to("servicemainmenu.php");
 }
 ?>
 
@@ -31,22 +34,19 @@ if (!$result) {
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-
-<title>View Requests</title>
 <link rel="stylesheet" type="text/css" href="site.css">
+<title> Requests Status</title>
 </head>
 
-<h4 style="text-align:center"> View Requests </h4>
-<p>
+<h4 style="text-align:center"> Requests Status</h4>
+<body>
 <table>
     <form action="view_request.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnsiteservice" value="Go back to Site Service Page" style="width:200px"/></td>
+            <td><input type="submit" name="returnsiteservice" value="Go back to Site Service Page" /></td>
         </tr>
     </form>
 </table>
-</p>
-
 
 <div>
 
@@ -85,6 +85,5 @@ if (!$result) {
     ?>
 
 </div>
-
 
 <?php include("lib/footer.php"); ?>
