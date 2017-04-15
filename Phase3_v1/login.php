@@ -51,7 +51,7 @@
 </div>
 <div>
 	<label style="text-align: center;"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Enter Password" name="password" value ="gatech123" required>
     </div>
      <button type="submit">Login</button>
     <!-- <button type="button" class="cancelbtn">Cancel</button>-->
