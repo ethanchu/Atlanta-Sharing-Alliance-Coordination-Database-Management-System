@@ -151,7 +151,7 @@ if (!$result) {
                 <td>
                 <select name="client_id">
                     <?php
-                        $query = "SELECT client_id FROM `client`";
+                        $query = "SELECT client_id FROM `client` WHERE head_of_household =1";
                         $result = mysqli_query($connection, $query);
                         while ($allclient = mysqli_fetch_assoc($result) ) {
                     ?>
