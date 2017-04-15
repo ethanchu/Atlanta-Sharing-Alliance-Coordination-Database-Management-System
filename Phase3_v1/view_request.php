@@ -10,6 +10,9 @@
 
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 
 <?php
 // Find site_id of foodbank
@@ -19,7 +22,7 @@ $UserID = intval($_SESSION['user_id']);
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("siteservice.php");
+    redirect_to("servicemainmenu.php?servicetype=$servicetype");
 }
 ?>
 
@@ -41,9 +44,9 @@ if (!$result) {
 <h4 style="text-align:center"> Requests Status</h4>
 <body>
 <table>
-    <form action="view_request.php" method="POST">
+    <form action="" method="POST">
         <tr>
-            <td><input type="submit" name="returnsiteservice" value="Go back to Site Service Page" /></td>
+            <td><input type="submit" name="returnsiteservice" value="Go back to <?php echo $servicetype?>" /></td>
         </tr>
     </form>
 </table>
@@ -77,7 +80,7 @@ if (!$result) {
         echo "<td>{$row['status']}</td>";
         $requserid = $row['user_id'];
         $reqitemid = $row['item_id'];
-        $link = "edit_request.php?requserid=".$requserid."&reqitemid=".$reqitemid;
+        $link = "edit_request.php?servicetype=".urlencode($servicetype)."&requserid=".$requserid."&reqitemid=".$reqitemid;
         echo '<td><a href='.$link.'>Cancel</a></td>';
         echo "</tr>";
     }

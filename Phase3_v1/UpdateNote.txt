@@ -10,3 +10,23 @@ Update on April,5th,2017
     e. For service(soupkitchen and shelter), Only (Site_ID Service Name Description Hours_of_Operation Condition_for_Use) are not null.
 2. Information pass to team.
     a. When log-in, need to put user_id and site_id into session. Since session is global variable, we only store id into it, like site_id, bunk_id, client_id , user_id and item_id
+	
+-------------
+Update on April,13,2017
+
+Link most of parts(except Martin's), In the pdf(link_flow in Google Drive), all highlighted parts has been linked and tested.
+Want to test your side.
+a. db_connection:
+define("DB_SERVER", "localhost");
+define('DB_PORT', "3306");
+define('DB_USER', "gatechUser");
+define('DB_PASS', "gatech123");
+define('DB_SCHEMA', "cs6400_sp17_team022");
+
+b. Use database cs6400_sp17_team022_Milestone2_0413.sql (Any following updates have to go through this file, and make sure your updates can be load successfully before check-in!!!!)
+
+Priyanka:
+1. Please work on css on this master version.
+
+Martin:
+1. When you get your part done, please link your parts, refer the pdf(link_flow in Google Drive).

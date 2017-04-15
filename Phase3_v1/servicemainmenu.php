@@ -25,14 +25,14 @@ if (isset($_POST["sitesevice"])) {
 
 <?php
 if (isset($_POST["itemsearch"])) {
-    redirect_to("itemsearch.php"); // Need to link to itemsearch
+    redirect_to("search_item.php?servicetype=$servicetype"); // Need to link to itemsearch
 }
 ?>
 
 
 <?php
 if (isset($_POST["requeststatusreport"])) {
-    redirect_to("view_request.php"); //Need to link to itemsearch
+    redirect_to("view_request.php?servicetype=$servicetype"); //Need to link to itemsearch
 }
 ?>
 

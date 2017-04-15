@@ -1,5 +1,7 @@
 <?php require_once("lib/db_connection.php"); ?>
-
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 <html> 
     <title>Client Report</title>
    <link rel="stylesheet" type="text/css" href="site.css">
@@ -79,7 +81,7 @@
                                   
 </div> 
 
-        <div style="text-align: center;"><a href="client.php">Go back to Client</a></div>
+        <div style="text-align: center;"><a href="client.php?servicetype=<?php echo $servicetype;?>">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

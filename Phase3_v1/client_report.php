@@ -1,5 +1,7 @@
 <?php require_once("lib/db_connection.php"); ?>
-
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 <html> 
 	<title>Client Report</title>
 	<link rel="stylesheet" type="text/css" href="site.css">
@@ -34,7 +36,7 @@
                     print "<td>" . $row[2] . "</td>";
                     print "<td>{$row[3]}</td>";
                     print "<td>" . $row[4] . "</td>";
-                    print '<td><a href="edit_client.php?editID=' . urlencode($row[0]) . '">edit name/ID</a></td>';
+                    print '<td><a href="edit_client.php?servicetype='.urlencode($servicetype).'&editID=' . urlencode($row[0]) . '">edit name/ID</a></td>';
                     print "</tr>";  
                 }
             ?>                
@@ -51,8 +53,8 @@
                     <td>site_id</td>
                     <td>service description</td>
                     <td>field_modified</td>
-                    <td><a href="new_log.php?logID=<?php echo $_GET['selectID'] ?> ">add new log</a></td>
-                    
+                    <td><a href="new_log.php?servicetype=<?php echo$servicetype ?>&logID=<?php echo $_GET['selectID'] ?> ">add new log</a></td>
+
                 </tr>                           
                         
             <?php   
@@ -77,7 +79,7 @@
             ?>                
             </table>                        
         </div>         
-        <div style="text-align:center; margin-top:50px;"> <a href="client.php">Go back to Client</a></div>
+        <div style="text-align:center; margin-top:50px;"> <a href="client.php?servicetype=<?php echo $servicetype?>">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

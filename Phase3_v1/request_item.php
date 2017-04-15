@@ -8,7 +8,9 @@
 -->
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
-
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 <?php
 // Find site_id of foodbank
 $SiteID = $_SESSION['site_id'];
@@ -22,21 +24,21 @@ $link = "request_item.php?reqitemid=".$ReqItemID;
 
 <?php
 if (isset($_POST["returnsiteservice"])) {
-    redirect_to("siteservice.php");
+    redirect_to("search_item.php?servicetype=$servicetype");
 }
 ?>
 
 <?php
 if (isset($_POST['request_item'])) {
     $NumRequest = $_POST['NumRequest'];
-    $query = "INSERT INTO request (user_id, item_id, num_request, num_provide, status) VALUES ('$UserID', '$ReqItemID', '$NumRequest', '0', 'pending')";
+    $query = "INSERT INTO request (user_id, item_id, num_request, num_provide, status) VALUES ($UserID, $ReqItemID, $NumRequest, 0, 'pending')";
     $result = mysqli_query($connection, $query);
     if ($result) {
         // Success
-        redirect_to("search_item.php");
+        redirect_to("search_item.php?servicetype=$servicetype");
     } else {
         // Failure
-        die("Database query failed. " . mysqli_error($connection));
+        die("Database query failed. " . mysqli_error($connection) . $ReqItemID);
     }
 }
 ?>
@@ -48,20 +50,20 @@ if (isset($_POST['request_item'])) {
 <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 
-<h4 style="text-align:center"> Requests item</h4>
 <body>
+<h4 style="text-align:center"> Requests item</h4>
 <p>
 <table>
-    <form action="request_item.php" method="POST">
+    <form action="" method="POST">
         <tr>
-            <td><input type="submit" name="returnsiteservice" value="Go back to Service Page" /></td>
+            <td><input type="submit" name="returnsiteservice" value="Go back to Search Item" /></td>
         </tr>
     </form>
 </table>
 </p>
 
 <div>
-    <form action=<?php echo $link; ?> method="POST">
+    <form action="" method="POST">
         <p>Number Request:
             <input type="number" name="NumRequest" value="" />
         </p>

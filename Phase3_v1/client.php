@@ -16,7 +16,7 @@ $servicetype =  $_GET["servicetype"];
 
 	<div id="frm">
 		<a href="servicemainmenu.php?servicetype=<?php echo $servicetype?>">Go Back to <?php echo $servicetype?></a>
-		<form action ="searchname.php" method = "POST">
+		<form action ="searchname.php?servicetype=<?php echo $servicetype?>" method = "POST">
 			<p>
 				<label>Client Name</label>
 				<input type="text" id = "client" name = "client_name" />
@@ -25,7 +25,7 @@ $servicetype =  $_GET["servicetype"];
 				<input type="submit" id = "submit" value = "Search Name" />
 			</p>
 		</form>	
-		<form action ="searchid.php" method = "POST">		
+		<form action ="searchid.php?servicetype=<?php echo $servicetype?>" method = "POST">
 			<p>
 				<label>Client ID</label>
 				<input type="text" id = "cardID" name = "client_cardID" />
@@ -35,7 +35,7 @@ $servicetype =  $_GET["servicetype"];
 			</p>					
 		</form>
 		
-		<form action ="registerclient.php" method = "POST">
+		<form action ="registerclient.php?servicetype=<?php echo $servicetype?>" method = "POST">
 			<p>
 				<input type="submit" id = "submit" value = "Register Client" />
 			</p>	

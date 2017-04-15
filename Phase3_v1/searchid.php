@@ -1,5 +1,7 @@
 <?php require_once("lib/db_connection.php"); ?>
-
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 <html> 
 	<title>Search client</title>
 	<link rel="stylesheet" type="text/css" href="site.css">
@@ -42,12 +44,12 @@
         	print "<tr>";
 			print "<td>" . $row[3] . "</td>";
 			print "<td>" . $row[4] . "</td>";
-			print '<td><a href="client_report.php?selectID=' . urlencode($row[0]) . '">select</a></td>';
+			print '<td><a href="client_report.php?servicetype='.urlencode($servicetype).'&selectID=' . urlencode($row[0]) . '">select</a></td>';
 			print "</tr>";	
    		}
     ?>
     </table>
-		<div style="text-align: center;"> <a href="client.php">Go back to Client</a></div>
+		<div style="text-align: center;"> <a href="client.php?servicetype=<?php echo $servicetype?>">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 

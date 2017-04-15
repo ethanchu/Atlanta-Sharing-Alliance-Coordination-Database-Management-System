@@ -10,18 +10,21 @@
 
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 
 <?php
 $SiteID = $_SESSION['site_id'];
 $ReqUserID = intval($_GET['requserid']);
 $ReqItemID = intval($_GET['reqitemid']);
-$link = "edit_request.php?requserid=".$ReqUserID."&reqitemid=".$ReqItemID;
+$link = "edit_request.php?servicetype=".urlencode($servicetype)."&requserid=".$ReqUserID."&reqitemid=".$ReqItemID;
 // $SiteID = 1; // Assign SiteID for testing
 ?>
 
 <?php
 if (isset($_POST["returnviewrequest"])) {
-    redirect_to("view_request.php");
+    redirect_to("view_request.php?servicetype=$servicetype");
 }
 ?>
 
@@ -33,13 +36,13 @@ if (isset($_POST['cancel_request'])) {
         $result = mysqli_query($connection, $query);
         if ($result) {
             // Success
-            redirect_to("view_request.php");
+            redirect_to("view_request.php?servicetype=$servicetype");
         } else {
             // Failure
             die("Database query failed. " . mysqli_error($connection));
         }
     } else {
-        redirect_to("view_request.php");
+        redirect_to("view_request.php?servicetype=$servicetype");
     }
 }
 ?>
@@ -53,7 +56,7 @@ if (isset($_POST['cancel_request'])) {
 <body>
 
 <table>
-    <form action="cancel_request.php" method="POST">
+    <form action="" method="POST">
         <tr>
             <td><input type="submit" name="returnviewrequest" value="Go back to View Requests Page" /></td>
         </tr>

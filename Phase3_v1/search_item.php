@@ -9,7 +9,9 @@
 
 <?php require_once("lib/db_connection.php"); ?>
 <?php require_once("lib/function.php"); ?>
-
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
 <?php
 $SiteID = $_SESSION['site_id'];
 $UserID = $_SESSION['user_id'];
@@ -19,7 +21,7 @@ $UserID = $_SESSION['user_id'];
 
 <?php
 if (isset($_POST["returnmainmenu"])) {
-    redirect_to("siteservice.php"); // Temp direct to Main menu
+    redirect_to("servicemainmenu.php?servicetype=$servicetype"); // Temp direct to Main menu
 }
 ?>
 
@@ -58,14 +60,14 @@ if (!$searchResult) {
 <body>
 <div>
     <table>
-        <form action="search_item.php" method="POST">
+        <form action="search_item.php?servicetype=<?php echo $servicetype?>" method="POST">
             <tr>
-                <td><input type="submit" name="returnmainmenu" value="Go back to Site Service" /></td>
+                <td><input type="submit" name="returnmainmenu" value="Go back to <?php echo $servicetype?>" /></td>
             </tr>
         </form>
     </table>
 
-    <form action='search_item.php' method=post>
+    <form action='' method=post>
         <?php
         // Get list of foodbanks
         $query = "SELECT b.site_id as id, b.name as name FROM `foodbank` a JOIN `site` b on a.site_id = b.site_id";
@@ -115,7 +117,7 @@ if (!$searchResult) {
             echo "<td>{$row['category']}</td>";
             echo "<td>{$row['sub_category']}</td>";
             $reqitemid = $row['item_id'];
-            $link = "request_item.php?reqitemid=".$reqitemid;
+            $link = "request_item.php?servicetype=".urlencode($servicetype)."&reqitemid=".$reqitemid;
 
             echo '<td><a href='.$link.'>Request Item</a></td>';
             echo "</tr>";
