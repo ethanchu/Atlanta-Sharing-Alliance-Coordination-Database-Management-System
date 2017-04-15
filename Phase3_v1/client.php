@@ -1,5 +1,9 @@
 <?php require_once("lib/db_connection.php"); ?>
 
+<?php
+$servicetype =  $_GET["servicetype"];
+?>
+
 <!DOCTYPE html>
 <html>
 <head> 
@@ -11,7 +15,7 @@
 
 
 	<div id="frm">
-		<a href="siteservice.php">Home</a>	
+		<a href="servicemainmenu.php?servicetype=<?php echo $servicetype?>">Go Back to <?php echo $servicetype?></a>
 		<form action ="searchname.php" method = "POST">
 			<p>
 				<label>Client Name</label>
