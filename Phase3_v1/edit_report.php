@@ -88,7 +88,7 @@ if (isset($_POST["edit_report"])) {
                 }
             } else {
                 // num_provde == num_request
-                $query = "UPDATE request SET num_provide = $num_provide, status='in-full' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+                $query1 = "UPDATE request SET num_provide = $num_provide, status='in-full' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
                 $remain = $unit - $num_provide;
                 $query2 = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
 

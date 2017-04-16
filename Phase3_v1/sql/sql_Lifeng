@@ -91,3 +91,47 @@ Edit/View Service and Waitlist:
     $query = "Delete FROM waitlist WHERE site_id = $currentsession AND service_name = 'shelter' AND 	client_id = $client_id ";
     $query = "INSERT INTO waitlist (site_id, service_name, client_id, waitinglist_ranking, datetime) VALUES ($currentsession, 'shelter', $client_id, $waitinglist_ranking, '$date')";
     $query = "SELECT * FROM waitlist WHERE Site_ID = $currentsession AND service_name = 'shelter' ORDER BY waitinglist_ranking ASC, datetime ASC";
+
+ADD/EDIT ITEM
+add_item.php:
+$query = "INSERT INTO Item (`name`, unit, storage_type, expiration_date, category, sub_category, site_id, service_name) VALUES ('$Name', '$Unit', '$StorageType', '$ExpirationDate', '$Category', '$SubCategory', '$SiteID', '$ServiceName')";
+
+edit_item_php:
+$query = "UPDATE Item SET unit= $Unit WHERE item_id=$ItemID AND site_id=$SiteID AND service_name='foodbank'";
+$query = "DELETE FROM Item where item_id = $ItemID";
+
+SEARCH ITEM AND REQUEST ITEM
+search_item.php:
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank'";
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND (expiration_date LIKE '%{$match}%' OR storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND expiration_date < '$datef' AND (storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND expiration_date < '$datef' AND (storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND site_id=$site";
+$query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND site_id=$site AND (expiration_date LIKE '%{$match}%' OR storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
+
+request_item.php:
+$query = "SELECT site_id FROM item WHERE item_id=$ReqItemID";
+$query = "INSERT INTO request (user_id, item_id, num_request, num_provide, status) VALUES ($UserID, $ReqItemID, $NumRequest, 0, 'pending')";
+
+VIEW AND EDIT OUTSTANDING REPORT
+view_report.php
+$query = "SELECT user_id, i.item_id, `name`, num_request, num_provide, unit, storage_type, category, sub_category, status FROM item AS i join request AS r on i.item_id=r.item_id where i.site_id = $SiteID";
+$query = "SELECT user_id, i.item_id, `name`, num_request, num_provide, unit, storage_type, category, sub_category, status FROM item AS i join request AS r on i.item_id=r.item_id where i.site_id = $SiteID order by `$SortCol`";
+
+edit_report.php
+$query = "SELECT unit FROM item where item_id=$ReqItemID";
+$query = "SELECT num_request FROM request where user_id=$ReqUserID AND item_id=$ReqItemID";
+$query = "UPDATE request SET status='unable to fill' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+$query1 = "UPDATE request SET num_provide=$num_provide, status='partially fulfilled' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+$query2 = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
+$query1 = "UPDATE request SET num_provide = $num_provide, status='in-full' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+$query2 = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
+
+VIEW AND EDIT REQUEST STATUS
+view_request.php
+$query = "SELECT user_id, i.item_id, `name`, num_request, num_provide, unit, status FROM request AS r join item AS i on i.item_id=r.item_id WHERE r.user_id=$UserID";
+
+edit_request.php
+$query = "DELETE FROM request WHERE user_id=$ReqUserID and item_id=$ReqItemID";
+
+
