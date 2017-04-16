@@ -12,9 +12,17 @@ SET default_storage_engine=InnoDB;
 CREATE DATABASE IF NOT EXISTS cs6400_sp17_team022 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE cs6400_sp17_team022;
 
+-- phpMyAdmin SQL Dump
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3307
+-- Generation Time: Apr 16, 2017 at 12:44 AM
+-- Server version: 5.7.17
+-- PHP Version: 7.1.2
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -83,7 +91,7 @@ INSERT INTO `client` (`client_id`, `phone_number`, `head_of_household`, `name`, 
 (9, NULL, 1, 'Jane Client9', '12349'),
 (10, NULL, 1, 'Jane Client10', '123410'),
 (11, NULL, 0, 'Jane Client11', '123411'),
-(12, NULL, 1, 'Jane Client12', '123412');
+(12, NULL, 1, '	Janey Client12', '123412');
 
 -- --------------------------------------------------------
 
@@ -328,7 +336,7 @@ INSERT INTO `item` (`item_id`, `name`, `unit`, `storage_type`, `expiration_date`
 
 CREATE TABLE `log` (
   `client_id` int(16) UNSIGNED NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `site_id` int(16) UNSIGNED NOT NULL,
   `description` varchar(50) NOT NULL,
   `field_modified` varchar(50) DEFAULT NULL,
@@ -340,42 +348,42 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`client_id`, `datetime`, `site_id`, `description`, `field_modified`, `note`) VALUES
-(1, '2017-04-01 11:24:00', 1, 'profile created', '', NULL),
-(1, '2017-04-01 11:35:20', 1, 'visit pantry1', '', NULL),
-(1, '2017-04-02 12:18:08', 3, 'visit pantry3', '', NULL),
-(2, '2017-04-15 11:28:08', 1, 'profile created', NULL, NULL),
-(2, '2017-04-15 12:18:08', 3, 'visit pantry3', NULL, NULL),
-(2, '2017-08-15 12:18:08', 1, 'visit pantry1', NULL, NULL),
-(3, '2017-04-15 11:18:08', 1, 'profile created', NULL, NULL),
-(3, '2017-04-15 12:18:08', 3, 'visit pantry3', NULL, NULL),
-(3, '2017-08-15 12:18:08', 1, 'visit pantry1', NULL, NULL),
-(4, '2017-04-15 10:18:08', 1, 'profile created', NULL, NULL),
-(4, '2017-04-15 12:18:08', 3, 'visit pantry3', NULL, NULL),
-(4, '2017-08-15 12:18:08', 1, 'visit pantry1', NULL, NULL),
-(5, '2017-05-15 10:18:08', 2, 'profile created', NULL, NULL),
-(5, '2017-05-15 10:28:08', 2, 'visit soup2', NULL, NULL),
-(5, '2017-06-15 10:18:08', 3, 'visit soup3', NULL, NULL),
-(6, '2017-05-15 11:18:08', 2, 'profile created', NULL, NULL),
-(6, '2017-05-15 11:28:08', 2, 'visit soup2', NULL, NULL),
-(6, '2017-06-15 11:18:08', 3, 'visit soup3', NULL, NULL),
-(7, '2017-05-15 12:18:08', 2, 'profile created', NULL, NULL),
-(7, '2017-05-15 12:28:08', 2, 'visit soup2', NULL, NULL),
-(7, '2017-06-15 12:18:08', 3, 'visit soup3', NULL, NULL),
-(8, '2017-05-15 13:18:08', 2, 'profile created', NULL, NULL),
-(8, '2017-05-15 13:28:08', 2, 'visit soup2', NULL, NULL),
-(8, '2017-06-15 13:18:08', 3, 'visit soup3', NULL, NULL),
-(9, '2017-07-15 10:18:08', 2, 'profile created', NULL, NULL),
-(9, '2017-07-15 10:28:08', 2, 'visit shelter2', NULL, NULL),
-(9, '2017-08-15 17:08:08', 3, 'visit shelter3', NULL, NULL),
-(10, '2017-07-15 11:18:08', 2, 'profile created', NULL, NULL),
-(10, '2017-07-15 11:28:08', 2, 'visit shelter2', NULL, NULL),
-(10, '2017-08-15 10:28:08', 3, 'visit shelter3', NULL, NULL),
-(11, '2017-07-15 12:18:08', 2, 'profile created', NULL, NULL),
-(11, '2017-07-15 12:28:08', 2, 'visit shelter2', NULL, NULL),
-(11, '2017-08-15 10:28:08', 3, 'visit shelter3', NULL, NULL),
-(12, '2017-07-15 13:18:08', 2, 'profile created', NULL, NULL),
-(12, '2017-07-15 13:28:08', 2, 'visit shelter2', NULL, NULL),
-(12, '2017-08-15 10:38:08', 3, 'visit shelter3', NULL, NULL);
+(1, '2017-04-01 18:24:00', 1, 'profile created', '', NULL),
+(1, '2017-04-01 18:35:20', 1, 'visit pantry1', '', NULL),
+(1, '2017-04-02 19:18:08', 3, 'visit pantry3', '', NULL),
+(2, '2017-04-15 18:28:08', 1, 'profile created', NULL, NULL),
+(2, '2017-04-15 19:18:08', 3, 'visit pantry3', NULL, NULL),
+(2, '2017-08-15 19:18:08', 1, 'visit pantry1', NULL, NULL),
+(3, '2017-04-15 18:18:08', 1, 'profile created', NULL, NULL),
+(3, '2017-04-15 19:18:08', 3, 'visit pantry3', NULL, NULL),
+(3, '2017-08-15 19:18:08', 1, 'visit pantry1', NULL, NULL),
+(4, '2017-04-15 17:18:08', 1, 'profile created', NULL, NULL),
+(4, '2017-04-15 19:18:08', 3, 'visit pantry3', NULL, NULL),
+(4, '2017-08-15 19:18:08', 1, 'visit pantry1', NULL, NULL),
+(5, '2017-05-15 17:18:08', 2, 'profile created', NULL, NULL),
+(5, '2017-05-15 17:28:08', 2, 'visit soup2', NULL, NULL),
+(5, '2017-06-15 17:18:08', 3, 'visit soup3', NULL, NULL),
+(6, '2017-05-15 18:18:08', 2, 'profile created', NULL, NULL),
+(6, '2017-05-15 18:28:08', 2, 'visit soup2', NULL, NULL),
+(6, '2017-06-15 18:18:08', 3, 'visit soup3', NULL, NULL),
+(7, '2017-05-15 19:18:08', 2, 'profile created', NULL, NULL),
+(7, '2017-05-15 19:28:08', 2, 'visit soup2', NULL, NULL),
+(7, '2017-06-15 19:18:08', 3, 'visit soup3', NULL, NULL),
+(8, '2017-05-15 20:18:08', 2, 'profile created', NULL, NULL),
+(8, '2017-05-15 20:28:08', 2, 'visit soup2', NULL, NULL),
+(8, '2017-06-15 20:18:08', 3, 'visit soup3', NULL, NULL),
+(9, '2017-07-15 17:18:08', 2, 'profile created', NULL, NULL),
+(9, '2017-07-15 17:28:08', 2, 'visit shelter2', NULL, NULL),
+(9, '2017-08-16 00:08:08', 3, 'visit shelter3', NULL, NULL),
+(10, '2017-07-15 18:18:08', 2, 'profile created', NULL, NULL),
+(10, '2017-07-15 18:28:08', 2, 'visit shelter2', NULL, NULL),
+(10, '2017-08-15 17:28:08', 3, 'visit shelter3', NULL, NULL),
+(11, '2017-07-15 19:18:08', 2, 'profile created', NULL, NULL),
+(11, '2017-07-15 19:28:08', 2, 'visit shelter2', NULL, NULL),
+(11, '2017-08-15 17:28:08', 3, 'visit shelter3', NULL, NULL),
+(12, '2017-07-15 20:18:08', 2, 'profile created', 'Jane Client12', NULL),
+(12, '2017-07-15 20:28:08', 2, 'visit shelter2', 'Jane Client12', NULL),
+(12, '2017-08-15 17:38:08', 3, 'visit shelter3', 'Jane Client12', NULL);
 
 -- --------------------------------------------------------
 
@@ -396,12 +404,78 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`user_id`, `item_id`, `num_request`, `num_provide`, `status`) VALUES
+(1, 17, 1, 1, 'in-full'),
+(1, 18, 3, 3, 'in-full'),
+(1, 85, 3, 3, 'in-full'),
+(1, 86, 1, 1, 'in-full'),
+(1, 101, 4, 0, 'pending'),
+(1, 102, 4, 0, 'pending'),
+(1, 103, 4, 0, 'pending'),
+(1, 104, 6, 0, 'pending'),
+(1, 105, 2, 0, 'pending'),
+(1, 106, 7, 0, 'pending'),
+(1, 107, 3, 0, 'pending'),
+(1, 108, 1, 0, 'pending'),
+(1, 109, 1, 0, 'pending'),
+(1, 110, 7, 0, 'pending'),
+(1, 161, 4, 0, 'pending'),
+(1, 162, 4, 0, 'pending'),
+(1, 163, 6, 0, 'pending'),
+(1, 164, 3, 0, 'pending'),
 (2, 1, 2, 0, 'pending'),
 (2, 2, 2, 0, 'pending'),
 (2, 3, 3, 0, 'pending'),
 (2, 4, 4, 0, 'pending'),
 (2, 5, 5, 0, 'pending'),
-(2, 6, 6, 0, 'pending');
+(2, 6, 6, 0, 'pending'),
+(2, 20, 3, 0, 'pending'),
+(2, 21, 5, 0, 'pending'),
+(2, 22, 7, 0, 'pending'),
+(2, 23, 3, 0, 'pending'),
+(2, 80, 1, 0, 'pending'),
+(2, 81, 2, 0, 'pending'),
+(2, 82, 4, 0, 'pending'),
+(2, 83, 3, 0, 'pending'),
+(2, 84, 2, 0, 'pending'),
+(2, 85, 1, 0, 'pending'),
+(2, 86, 4, 0, 'pending'),
+(2, 87, 1, 0, 'pending'),
+(2, 161, 1, 1, 'in-full'),
+(2, 162, 1, 1, 'in-full'),
+(2, 163, 1, 1, 'in-full'),
+(2, 164, 1, 1, 'in-full'),
+(2, 165, 5, 0, 'pending'),
+(2, 166, 4, 0, 'pending'),
+(2, 167, 6, 0, 'pending'),
+(2, 168, 2, 0, 'pending'),
+(3, 1, 1, 0, 'pending'),
+(3, 2, 1, 0, 'pending'),
+(3, 3, 1, 0, 'pending'),
+(3, 4, 1, 0, 'pending'),
+(3, 5, 1, 0, 'pending'),
+(3, 9, 1, 0, 'pending'),
+(3, 10, 1, 0, 'pending'),
+(3, 11, 1, 0, 'pending'),
+(3, 12, 1, 0, 'pending'),
+(3, 13, 1, 0, 'pending'),
+(3, 26, 2, 2, 'in-full'),
+(3, 27, 1, 1, 'in-full'),
+(3, 28, 1, 1, 'in-full'),
+(3, 29, 1, 1, 'in-full'),
+(3, 77, 1, 0, 'pending'),
+(3, 78, 1, 0, 'pending'),
+(3, 79, 1, 0, 'pending'),
+(3, 80, 1, 0, 'pending'),
+(3, 81, 1, 0, 'pending'),
+(3, 82, 1, 0, 'pending'),
+(3, 83, 1, 0, 'pending'),
+(3, 86, 1, 0, 'pending'),
+(3, 87, 1, 0, 'pending'),
+(3, 88, 1, 0, 'pending'),
+(3, 89, 1, 0, 'pending'),
+(3, 90, 1, 0, 'pending'),
+(3, 91, 1, 0, 'pending'),
+(3, 92, 1, 0, 'pending');
 
 -- --------------------------------------------------------
 
