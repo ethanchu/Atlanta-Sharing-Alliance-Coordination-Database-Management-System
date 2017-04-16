@@ -108,6 +108,12 @@ if (isset($_POST["logout"])) {
 }
 ?>
 
+<?php
+if (isset($_POST["waitlistreport"])) {
+    redirect_to("waitlistreport.php");
+}
+?>
+
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
 <link rel="stylesheet" type="text/css" href="site.css">
@@ -121,6 +127,7 @@ if (isset($_POST["logout"])) {
         <form action="siteservice.php" method="POST">
             <tr>
                 <td><input type="submit" name="addservice" value="Add Service" /></td>
+                <td><input type="submit" name="waitlistreport" value="Waitlist Report" /></td>
                 <td><input type="submit" name="logout" value="Log Out" /></td>
             </tr>
         </form>
