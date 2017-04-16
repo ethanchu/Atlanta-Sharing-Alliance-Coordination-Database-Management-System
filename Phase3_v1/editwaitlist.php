@@ -126,7 +126,7 @@ if (!$result) {
                     <input type="text" style="text-align:center;" name="clientname" value="<?php echo $curclient["name"] ?>" readonly />
                 </td>
                 <td> <input type="text" style="text-align:center;" name="waitinglist_ranking" value="<?php echo $wl_item["waitinglist_ranking"] ?>"  /></td>
-                <td> <input type="text" style="text-align:center;" name="datetime" value="<?php echo $wl_item["datetime"] ?>"  /></td>
+                <td> <input type="text" style="text-align:center;" name="datetime" value="<?php echo $wl_item["datetime"] ?>" readonly /></td>
                 <td> <input type="submit" name="editwaitlist" value="Edit" /></td>
                 <td> <input type="submit" name="deletewaitlist" value="Delete" /></td>
                 </form>

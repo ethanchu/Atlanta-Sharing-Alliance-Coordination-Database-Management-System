@@ -43,7 +43,7 @@ if($row = mysqli_fetch_assoc($result))
    <!-- For Meals remaining -->
    <div>
     <label><b>Meals Remaining : </b></label>
-    <input type="text" value="<?php echo $unit ?>" />
+    <input type="text" value="<?php echo $unit ?>" readonly/>
   </div>
   <br>
   <br>
@@ -53,7 +53,7 @@ if($row = mysqli_fetch_assoc($result))
   <!-- For donation type -->
   <div>
     <label><b>Donation Type Needed : </b></label>
-     <input type="text" value=" <?php echo $sub_category ?>" /> 
+     <input type="text" value=" <?php echo $sub_category ?>" readonly/>
   </div>
   </div>
 	</form>  
