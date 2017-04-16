@@ -78,8 +78,41 @@ $servicetype =  $_GET["servicetype"];
                 
             ?>                
             </table>                        
-        </div>         
-        <div style="text-align:center; margin-top:50px;"> <a href="client.php?servicetype=<?php echo $servicetype?>">Go back to Client</a></div>
+        </div>
+
+
+    <div class="Waitlist_section">
+        <div style="text-align:center; margin-top:100px; color: #4CAF50;">Client Waitlist Information</div>
+        <table border="1">
+            <tr>
+                <td>Site ID</td>
+                <td>Service Nmae</td>
+                <td>Waitlist Ranking</td>
+                <td>Date & Time</td>
+            </tr>
+
+            <?php
+            $request_id3 = $_GET['selectID'];
+
+            //Query the database for user
+            $sql="SELECT site_id, service_name, waitinglist_ranking, datetime FROM waitlist Where Client_id = $request_id3";//need to use single quote for variables
+            $query= mysqli_query($connection,$sql);
+
+            while($row = mysqli_fetch_array($query,MYSQLI_NUM)){
+
+                print "<tr>";
+                print "<td>" . $row[0] . "</td>";
+                print "<td>" . $row[1] . "</td>";
+                print "<td>" . $row[2] . "</td>";
+                print "<td>{$row[3]}</td>";
+                print "</tr>";
+            }
+
+            ?>
+        </table>
+    </div>
+
+    <div style="text-align:center; margin-top:50px;"> <a href="client.php?servicetype=<?php echo $servicetype?>">Go back to Client</a></div>
 
     <?php include("lib/footer.php"); ?>
 
