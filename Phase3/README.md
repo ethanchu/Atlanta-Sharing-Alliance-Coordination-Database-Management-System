@@ -42,6 +42,9 @@ team22_p2_schema.sql
 launch the URL: 
 http://localhost:8080/6400Spring17Team022/Phase3/home.php
 
+Web Page Link Flow
+![ScreenShot](png/WebLinkFlow.png)
+
 ##List of team members:
 Yichen Zhu  yzhu421@gatech.edu
 Lifeng Wan  lwan33@gatech.edu
