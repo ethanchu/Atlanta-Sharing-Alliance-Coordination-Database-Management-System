@@ -34,6 +34,15 @@ if (!isset($_POST['foodbank'])) {
         $match = $_POST['searchStr'];
         $query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND (expiration_date LIKE '%{$match}%' OR storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
     }
+} elseif ($_POST['foodbank'] == 'ExpiredItems') {
+    $date = new DateTime ('now');
+    $datef = $date->format('Y-m-d H:i:s');
+    if (!isset($_POST['searchStr'])) {
+        $query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND expiration_date < '$datef'";
+    } else {
+        $match = $_POST['searchStr'];
+        $query = "SELECT item_id, `name`, unit, storage_type, expiration_date, category, sub_category FROM Item WHERE service_name='foodbank' AND expiration_date < '$datef' AND (storage_type LIKE '%{$match}%' OR category LIKE '%{$match}%' OR sub_category LIKE '%{$match}%' OR name LIKE '%{$match}%')";
+    }
 } else {
     $site = $_POST['foodbank'];
     if (!isset($_POST['searchStr'])) {
@@ -46,8 +55,8 @@ if (!isset($_POST['foodbank'])) {
 // Test if there was a query error
 $searchResult = mysqli_query($connection, $query);
 if (!$searchResult) {
-    // die("Items select failed.".mysqli_error($connection));
-    echo "Cannot get items from database.";
+    die("Items select failed.".mysqli_error($connection));
+    // echo "Cannot get items from database.";
 }
 ?>
 
@@ -83,6 +92,7 @@ if (!$searchResult) {
             while ($row = mysqli_fetch_array($result)) {
                 $select .= '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
+            $select .= '<option value="ExpiredItems">Expired Items</option>';
             $select .= '</select>';
             echo $select;
         }
