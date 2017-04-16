@@ -71,9 +71,9 @@ if (isset($_POST["add_item"])) {
         <p>Storage Type:
             <select name="StorageType">
                 <option value="NULL"></option>
-                <option value="Dry Good">Dry Good</option>
-                <option value="Refrigerated">Refrigerated</option>
-                <option value="Frozen">Frozen</option>
+                <option value="drygood">drygood</option>
+                <option value="refrigerated">refrigerated</option>
+                <option value="frozen">frozen</option>
             </select>
         </p>
         <p>Expiration Date:
@@ -81,8 +81,8 @@ if (isset($_POST["add_item"])) {
         </p>
         <p>Category:
             <select name="Category">
-                <option value="Food">Food</option>
-                <option value="Supplies">Supplies</option>
+                <option value="food">Food</option>
+                <option value="supplies">Supplies</option>
             </select>
         </p>
         <p>Sub-Category:
@@ -108,15 +108,15 @@ if (isset($_POST["add_item"])) {
                 }
                 */
             echo '<select name="SubCategory">
-                      <option value="Vegetables">Vegetables</option>
+                      <option value="vegetables">vegetables</option>
                       <option value="nuts/grains/beans">nuts/grains/beans</option>
-                      <option value="Meat/seafood">Meat/seafood</option>
-                      <option value="Dairy/eggs">Dairy/eggs</option>
-                      <option value="Sauce/Condiment/Seasoning">Sauce/Condiment/Seasoning</option>
-                      <option value="Juice/Drink">Juice/Drink</option>
-                      <option value="Personal hygiene">Personal hygiene</option>
-                      <option value="Clothing">Clothing</option>
-                      <option value="Shelter">Shelter</option>
+                      <option value="meat/seafood">meat/seafood</option>
+                      <option value="dairy/eggs">dairy/eggs</option>
+                      <option value="sauce/condiments">sauce/condiment/seasoning</option>
+                      <option value="juice/drink">juice/drink</option>
+                      <option value="personal hygiene">personal hygiene</option>
+                      <option value="clothing">clothing</option>
+                      <option value="shelter">shelter</option>
                       <option value="other">other</option>
                  </select>';
             ?>
