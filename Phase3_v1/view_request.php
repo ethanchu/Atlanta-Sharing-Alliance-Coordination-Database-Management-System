@@ -31,7 +31,8 @@ $query = "SELECT user_id, i.item_id, `name`, num_request, num_provide, unit, sta
 // Test if there was a query error
 $result = mysqli_query($connection, $query);
 if (!$result) {
-    die("View outstanding requests failed.".mysqli_error($connection));
+    // die("View outstanding requests failed.".mysqli_error($connection));
+    echo "Cannot view requests.";
 }
 ?>
 

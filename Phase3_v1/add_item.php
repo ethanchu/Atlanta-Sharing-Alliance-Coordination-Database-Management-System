@@ -34,10 +34,12 @@ if (isset($_POST["add_item"])) {
     $result = mysqli_query($connection, $query);
     if ($result) {
         // Success
+        echo 'Item added successfully!';
         redirect_to("add_item.php");
     } else {
         // Failure
-        die("Database query failed. " . mysqli_error($connection));
+        // die("Database query failed. " . mysqli_error($connection));
+        echo 'Please fill in all the areas correctly';
     }
     //redirect_to("addservice.php");
 }
@@ -68,6 +70,7 @@ if (isset($_POST["add_item"])) {
         </p>
         <p>Storage Type:
             <select name="StorageType">
+                <option value="NULL"></option>
                 <option value="Dry Good">Dry Good</option>
                 <option value="Refrigerated">Refrigerated</option>
                 <option value="Frozen">Frozen</option>

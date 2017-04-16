@@ -30,42 +30,81 @@ if (isset($_POST["returnviewreport"])) {
 
 <?php
 if (isset($_POST["edit_report"])) {
-    $NumProvide = $_POST['num_provide'];
-    $Status = $_POST['status'];
-    // Why database is not updated
-    $query = "UPDATE request SET num_provide=$NumProvide, status='$Status' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
-    $result = mysqli_query($connection, $query);
-    if (!$result) {
-        die("Database query failed. " . mysqli_error($connection));
-    }
-
-    // Update inventory
     // Find units of items
     $query = "SELECT unit FROM item where item_id=$ReqItemID";
     $result = mysqli_query($connection, $query);
     if (!$result) {
-        die("Query failed." . mysqli_error($connection));
+        // die("Query failed." . mysqli_error($connection));
+        echo "Can not get available units of item.";
     }
     if ($row = mysqli_fetch_array($result)) {
         $unit = $row['unit'];
     }
-    if ($Status == 'closed') {
-        if ($NumProvide > $unit) {
-            $query = "UPDATE item SET unit=0 WHERE item_id=$ReqItemID";
-        } else {
-            $remain = $unit - $NumProvide;
-            $query = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
-        }
+
+    // Get number of request
+    $query = "SELECT num_request FROM request where user_id=$ReqUserID AND item_id=$ReqItemID";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        // die("Query failed." . mysqli_error($connection));
+        echo "Can not get number requested of the item.";
+    }
+    if ($row = mysqli_fetch_array($result)) {
+        $num_request = $row['num_request'];
+    }
+    // Update request
+    if ($_POST['Action'] == 'deny') {
+        $query = "UPDATE request SET status='unable to fill' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
         $result = mysqli_query($connection, $query);
-        if ($result) {
-            // Success
-            redirect_to("view_report.php");
+        if (!$result) {
+            // die("Query failed." . mysqli_error($connection));
+            echo "Can not update request.";
         } else {
-            // Failure
-            die("Database query failed. " . mysqli_error($connection));
+            redirect_to("view_report.php");
         }
-    } else {
-        redirect_to("view_report.php");
+    } elseif ($_POST['Action'] == 'accept') {
+        if ($_POST['num_provide'] == "") {
+            echo 'Please enter number to provide.';
+            // redirect_to("edit_report.php");
+        } else {
+            $num_provide = $_POST['num_provide'];
+            if ($num_provide > $unit || $num_provide > $num_request || $num_provide < 0) {
+                echo 'Please enter a valid number';
+                // redirect_to("edit_report.php");
+            } elseif ($num_provide < $num_request) {
+                $query1 = "UPDATE request SET num_provide=$num_provide, status='partially fulfilled' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+                $remain = $unit - $num_provide;
+                $query2 = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
+
+                $result1 = mysqli_query($connection, $query1);
+                if (!$result1) {
+                    // die("Query failed." . mysqli_error($connection));
+                    echo "Can not update request.";
+                }
+                $result2 = mysqli_query($connection, $query2);
+                if (!$result2) {
+                    echo "Can not update inventory";
+                } else {
+                    redirect_to("view_report.php");
+                }
+            } else {
+                // num_provde == num_request
+                $query = "UPDATE request SET num_provide = $num_provide, status='in-full' WHERE user_id=$ReqUserID AND item_id=$ReqItemID";
+                $remain = $unit - $num_provide;
+                $query2 = "UPDATE item SET unit=$remain WHERE item_id=$ReqItemID";
+
+                $result1 = mysqli_query($connection, $query1);
+                if (!$result1) {
+                    // die("Query failed." . mysqli_error($connection));
+                    echo "Can not update request.";
+                }
+                $result2 = mysqli_query($connection, $query2);
+                if (!$result2) {
+                    echo "Can not update inventory";
+                } else {
+                    redirect_to("view_report.php");
+                }
+            }
+        }
     }
 }
 ?>
@@ -88,12 +127,12 @@ if (isset($_POST["edit_report"])) {
 <div>
     <form action=<?php echo $link; ?> method="POST">
         <p>Number Provide:
-            <input type="number" name="num_provide" value="" />
+            <input type="number" name="num_provide" value =""/>
         </p>
         <p>Status:
-            <select name="status">
-                <option value="closed">Closed</option>
-                <option value="pending">Pending</option>
+            <select name="Action">
+                <option value="accept">Accept</option>
+                <option value="deny">Deny</option>
             </select>
         </p>
         <input type=submit name="edit_report">
@@ -106,7 +145,7 @@ if (isset($_POST["edit_report"])) {
     echo $ReqUserID;
     echo gettype($ReqUserID);
     */
-    // echo $unit['unit'];
+    // echo $num_provide;
     ?>
 </div>
 

@@ -39,7 +39,8 @@ if (isset($_POST['cancel_request'])) {
             redirect_to("view_request.php?servicetype=$servicetype");
         } else {
             // Failure
-            die("Database query failed. " . mysqli_error($connection));
+            // die("Database query failed. " . mysqli_error($connection));
+            echo "Cannot update the database.";
         }
     } else {
         redirect_to("view_request.php?servicetype=$servicetype");

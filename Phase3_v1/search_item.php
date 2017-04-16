@@ -46,7 +46,8 @@ if (!isset($_POST['foodbank'])) {
 // Test if there was a query error
 $searchResult = mysqli_query($connection, $query);
 if (!$searchResult) {
-    die("Items select failed.".mysqli_error($connection));
+    // die("Items select failed.".mysqli_error($connection));
+    echo "Cannot get items from database.";
 }
 ?>
 

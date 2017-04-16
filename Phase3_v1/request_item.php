@@ -31,14 +31,29 @@ if (isset($_POST["returnsiteservice"])) {
 <?php
 if (isset($_POST['request_item'])) {
     $NumRequest = $_POST['NumRequest'];
-    $query = "INSERT INTO request (user_id, item_id, num_request, num_provide, status) VALUES ($UserID, $ReqItemID, $NumRequest, 0, 'pending')";
+    $query = "SELECT site_id FROM item WHERE item_id=$ReqItemID";
     $result = mysqli_query($connection, $query);
-    if ($result) {
-        // Success
-        redirect_to("search_item.php?servicetype=$servicetype");
+    if (!$result) {
+        // die("Query failed." . mysqli_error($connection));
+        echo "Can not get site associated with user.";
+    }
+    if ($row = mysqli_fetch_array($result)) {
+        $ReqItemSite = $row['site_id'];
+    }
+    if ($SiteID == $ReqItemSite) {
+        // Cannot request item from the foodbank the user associated to
+        echo "Item is in your foodbank. Should edit the item instead";
     } else {
-        // Failure
-        die("Database query failed. " . mysqli_error($connection) . $ReqItemID);
+        $query = "INSERT INTO request (user_id, item_id, num_request, num_provide, status) VALUES ($UserID, $ReqItemID, $NumRequest, 0, 'pending')";
+        $result = mysqli_query($connection, $query);
+        if ($result) {
+            // Success
+            redirect_to("search_item.php?servicetype=$servicetype");
+        } else {
+            // Failure
+            // die("Database query failed. " . mysqli_error($connection) . $ReqItemID);
+            echo "Cannot update the database. Please check your inputs.";
+        }
     }
 }
 ?>
