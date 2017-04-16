@@ -2,7 +2,7 @@
 <?php
 $servicetype =  $_GET["servicetype"];
 ?>
-?>
+
  <?php
 if(isset($_POST['submit'])){
 
