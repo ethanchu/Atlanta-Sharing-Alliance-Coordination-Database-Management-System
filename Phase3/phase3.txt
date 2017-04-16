@@ -11,6 +11,7 @@ $sql="SELECT * FROM client where description LIKE '%$id%' ";
 client_report.php :
 $sql="SELECT * FROM client where client_id=$request_id1 ";     
 $sql="SELECT * FROM log where client_id=$request_id2 ";
+$sql="SELECT site_id, service_name, waitinglist_ranking, datetime FROM waitlist Where Client_id = $request_id3";
 
 edit_client.php :
 $sql="select name from client where client_id = $clientid";
@@ -91,6 +92,9 @@ Edit/View Service and Waitlist:
     $query = "Delete FROM waitlist WHERE site_id = $currentsession AND service_name = 'shelter' AND 	client_id = $client_id ";
     $query = "INSERT INTO waitlist (site_id, service_name, client_id, waitinglist_ranking, datetime) VALUES ($currentsession, 'shelter', $client_id, $waitinglist_ranking, '$date')";
     $query = "SELECT * FROM waitlist WHERE Site_ID = $currentsession AND service_name = 'shelter' ORDER BY waitinglist_ranking ASC, datetime ASC";
+
+6. waitlistreport.php:
+    $query = "SELECT site_id, service_name, COUNT(*) AS num FROM waitlist GROUP BY site_id, service_name";
 
 ADD/EDIT ITEM
 add_item.php:
