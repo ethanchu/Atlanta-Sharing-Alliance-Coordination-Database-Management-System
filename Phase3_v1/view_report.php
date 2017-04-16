@@ -33,7 +33,8 @@ if (!isset($_POST['sort_col'])) {
 // Test if there was a query error
 $result = mysqli_query($connection, $query);
 if (!$result) {
-    die("View outstanding requests failed.".mysqli_error($connection));
+    // die("View outstanding requests failed.".mysqli_error($connection));
+    echo "Cannot view outstanding requests.";
 }
 ?>
 

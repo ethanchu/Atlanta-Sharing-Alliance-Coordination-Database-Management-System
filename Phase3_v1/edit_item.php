@@ -35,12 +35,14 @@ if (isset($_POST['edit_item'])) {
     $result = mysqli_query($connection, $query);
     if ($result) {
         // Success
+        echo $screenString;
         redirect_to("edit_item.php");
     } else {
         // Failure
-        die("Database query failed. " . mysqli_error($connection));
+        // die("Database query failed. " . mysqli_error($connection));
+        echo "Cannot update the database. Please check inputs.";
     }
-    echo $screenString;
+    // echo $screenString;
 }
 ?>
 
