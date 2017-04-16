@@ -17,7 +17,7 @@ USE cs6400_sp17_team022;
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 16, 2017 at 12:59 AM
+-- Generation Time: Apr 16, 2017 at 01:18 AM
 -- Server version: 5.7.17
 -- PHP Version: 7.1.2
 
@@ -592,6 +592,20 @@ CREATE TABLE `waitlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `waitlist`
+--
+
+INSERT INTO `waitlist` (`site_id`, `service_name`, `client_id`, `waitinglist_ranking`, `datetime`) VALUES
+(2, 'shelter', 1, 1, '2017-04-16 01:04:28'),
+(2, 'shelter', 3, 2, '2017-04-16 01:05:26'),
+(2, 'shelter', 5, 4, '2017-04-16 01:06:50'),
+(2, 'shelter', 7, 3, '2017-04-16 01:05:40'),
+(3, 'shelter', 7, 4, '2017-04-16 01:07:54'),
+(3, 'shelter', 9, 3, '2017-04-16 01:07:49'),
+(3, 'shelter', 10, 2, '2017-04-16 01:07:43'),
+(3, 'shelter', 12, 1, '2017-04-16 01:07:38');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -708,12 +722,6 @@ ALTER TABLE `user`
 --
 
 --
--- Constraints for table `bunk`
---
-ALTER TABLE `bunk`
-  ADD CONSTRAINT `SHELTER_BUNK` FOREIGN KEY (`site_id`,`service_name`) REFERENCES `shelter` (`site_id`, `service_name`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `foodbank`
 --
 ALTER TABLE `foodbank`
@@ -729,7 +737,7 @@ ALTER TABLE `foodpantry`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `FoodBank_Item` FOREIGN KEY (`site_id`,`service_name`) REFERENCES `foodbank` (`site_id`, `service_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FoodBank_Item` FOREIGN KEY (`site_id`,`service_name`) REFERENCES `foodbank` (`site_id`, `service_name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `log`
