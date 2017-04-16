@@ -78,6 +78,7 @@ if (!$searchResult) {
     </table>
 
     <form action='' method=post>
+    <table>
         <?php
         // Get list of foodbanks
         $query = "SELECT b.site_id as id, b.name as name FROM `foodbank` a JOIN `site` b on a.site_id = b.site_id";
@@ -87,24 +88,30 @@ if (!$searchResult) {
             die("Database query failed.");
         }
         if (mysqli_num_rows($result)) {
-            $select = '<select name="foodbank">';
+            $select = '<tr><td></td><td class="right"><select name="foodbank">';
             $select .= '<option disabled selected value> -- select an option -- </option>';
             while ($row = mysqli_fetch_array($result)) {
                 $select .= '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
             $select .= '<option value="ExpiredItems">Expired Items</option>';
-            $select .= '</select>';
+            $select .= '</select></td></tr>';
             echo $select;
         }
         ?>
-        Search: <input type="text" name="searchStr" value=""/>
-        <input type=submit>
-
+        <tr>
+        <td class="left">Search:</td>
+        <td class="right"><input type="text" name="searchStr" style="width: 250px;" value=""/></td>
+        </tr>
+         <tr>
+		       <td colspan="2"><input type=submit></td>
+	         </tr>
+             <tr>
+</table>
     </form>
 
     <?php
         // Print the column names as the headers of a table
-        echo '<table cellpadding="0"> <tr>';
+        echo '<table cellpadding="0" border="1" style="margin-bottom:20px;"> <tr>';
         for($i = 0; $i < mysqli_num_fields($searchResult); $i++) {
             $field_info = mysqli_fetch_field($searchResult);
             if ($i > 0) {

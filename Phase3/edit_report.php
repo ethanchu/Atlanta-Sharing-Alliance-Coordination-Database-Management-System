@@ -119,7 +119,7 @@ if (isset($_POST["edit_report"])) {
 <table>
     <form action="edit_report.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnviewreport" value="Go back to Outstanding Requests Page" /></td>
+            <td><input type="submit" name="returnviewreport" style="width:250px" value="Go back to Outstanding Requests Page" /></td>
         </tr>
     </form>
 </table>
@@ -127,15 +127,17 @@ if (isset($_POST["edit_report"])) {
 <div>
     <form action=<?php echo $link; ?> method="POST">
         <p>Number Provide:
-            <input type="number" name="num_provide" value =""/>
+            <input type="number" style="height: 30px;" name="num_provide" value =""/>
         </p>
         <p>Status:
-            <select name="Action">
+            <select name="Action"  style="height: 30px;">
                 <option value="accept">Accept</option>
                 <option value="deny">Deny</option>
             </select>
         </p>
-        <input type=submit name="edit_report">
+        <div style="text-align:center">
+        <input type=submit name="edit_report" >
+        </div>
     </form>
 
     <?php

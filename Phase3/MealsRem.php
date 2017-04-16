@@ -39,6 +39,7 @@ if($row = mysqli_fetch_assoc($result))
    <br>
    <br>
    <br>
+   <h4 style="text-align:center"> Meals Remaining</h4>
    <div class="container">
    <!-- For Meals remaining -->
    <div>

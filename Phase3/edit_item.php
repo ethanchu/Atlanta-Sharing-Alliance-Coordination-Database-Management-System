@@ -56,12 +56,13 @@ if (isset($_POST['edit_item'])) {
 <table>
     <form action="edit_item.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" style="width: 250px" value="Go back to FoodBank Page" /></td>
         </tr>
     </form>
 </table>
 
 <div>
+<table>
     <form action='edit_item.php' method=post>
         <?php
         // Get list of foodbanks
@@ -72,20 +73,25 @@ if (isset($_POST['edit_item'])) {
             die("Database query failed.");
         }
         if (mysqli_num_rows($result)) {
-            $select = '<select name="itemid">';
+            $select = '<tr><td></td><td class="right"><select name="itemid" style="height:30px;margin-bottom: 10px;">';
             $select .= '<option disabled selected value> -- select an option -- </option>';
             while ($row = mysqli_fetch_array($result)) {
                 $select .= '<option value="' . $row['item_id'] . '">' . $row['name'] . '</option>';
             }
-            $select .= '</select>';
+            $select .= '</select></td></tr>';
             echo $select;
         }
         ?>
-
-        Unit: <input type="number" name="Unit" value="" />
-
-        <input type="submit" name="edit_item" >
-
+        <tr>
+        <td class="left">Unit:</td>
+        <td class="right"><input type="number" name="Unit" value="" style="width: 250px;height: 30px;"  /></td>
+        </tr>
+        
+         <tr>
+		       <td colspan="2"><input type="submit" name="edit_item" ></td>
+	         </tr>
+             
+       </table>
     </form>
 </div>
 

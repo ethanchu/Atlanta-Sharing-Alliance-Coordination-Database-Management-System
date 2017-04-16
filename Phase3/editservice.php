@@ -80,7 +80,7 @@ $preinfo = mysqli_fetch_assoc($result);
 </head>
 
 <div class="center">
-<h1> Edit Service </h1>
+<h4 style="text-align: center;"> Edit Service </h4>
 <p>
 <table>
     <form action="editservice.php" method="POST">
@@ -101,33 +101,39 @@ $preinfo = mysqli_fetch_assoc($result);
 </p>
 
 <div>
+<table>
     <form action="editservice.php" method="POST">
-        <p>Service Type:
-            <input type="text" name="servicetype" value="<?php echo $servicetype ?>" readonly="readonly"/>
-        </p>
-        <p>Description:
-            <input type="text" name="description" value="<?php echo $preinfo['description'] ?>" />
-        </p>
-        <p>Hour of Operation:
-            <input type="text" name="hourofoperation" value="<?php echo $preinfo['hours_of_operation'] ?>" />
-        </p>
-        <p>Condition for use:
-            <input type="text" name="conditionforuse" value="<?php echo $preinfo['condition_for_use'] ?>" />
-        </p>
+        <tr>
+        <td class="left">Service Type:</td>
+        <td class="right"><input type="text" name="servicetype" style="width: 250px;" value="<?php echo $servicetype ?>" readonly="readonly"/></td>
+        </tr>
+         <tr>
+        <td class="left">Description:</td>
+        <td class="right"><input type="text" name="description" style="width: 250px;" value="<?php echo $preinfo['description'] ?>" /></td>
+        </tr>
+         <tr>
+        <td class="left">Hour of Operation:</td>
+        <td class="right"><input type="text" name="hourofoperation" style="width: 250px;" value="<?php echo $preinfo['hours_of_operation'] ?>" /></td>
+        </tr>
+         <tr>
+        <td class="left">Condition for use:</td>
+        <td class="right"><input type="text" name="conditionforuse" style="width: 250px;" value="<?php echo $preinfo['condition_for_use'] ?>" /></td>
+        </tr>
         <?php
             // Optional for soupkitchen
             if ($servicetype == "soupkitchen") {
         ?>
-             <h4> Optional for Soup Kitchen </h4>
-                <p>
-                 Seat Capacity:
-                    <input type="text" name="seatcapacity" value="<?php echo $preinfo['seat_capacity'] ?>" />
-                </p>
-                <p>
-                 Seat Available:
-                 <input type="text" name="seatavailable" value="<?php echo $preinfo['seat_available'] ?>" />
-                </p>
-
+             <tr>
+		       <td colspan="2"><h4> Optional for Soup Kitchen </h4></td>
+	         </tr>
+             <tr>
+        <td class="left">Seat Capacity:</td>
+        <td class="right"><input type="text" name="seatcapacity" style="width: 250px;" value="<?php echo $preinfo['seat_capacity'] ?>" /></td>
+        </tr>
+        <tr>
+        <td class="left">Seat Available:</td>
+        <td class="right"><input type="text" name="seatavailable" style="width: 250px;" value="<?php echo $preinfo['seat_available'] ?>" /></td>
+        </tr>
         <?php
         }
         ?>
@@ -136,18 +142,24 @@ $preinfo = mysqli_fetch_assoc($result);
             // Optional for Shelter
             if ($servicetype == "shelter") {
         ?>
-                <h4> Optional for Shelter: </h4>
-                <p>
-                     Familyroom Count:
-                    <input type="text" name="familyroom_count" value="<?php echo $preinfo['familyroom_count'] ?>" />
-                </p>
+                
+                <tr>
+		       <td colspan="2"><h4> Optional for Shelter </h4></td>
+	         </tr>
+             <tr>
+        <td class="left">Familyroom Count:</td>
+        <td class="right"><input type="text" style="width: 250px;" name="familyroom_count" value="<?php echo $preinfo['familyroom_count'] ?>" /></td>
+        </tr>
 
         <?php
         }
         ?>
-
-        <input type="submit" name="confirm" value="confirm" />
+           <tr>
+		       <td colspan="2"><input type="submit" name="confirm" value="confirm" /></td>
+	         </tr>
+        
     </form>
+   </table>
 </div>
 
 

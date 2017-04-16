@@ -56,7 +56,7 @@ if (!$result) {
 
     <?php
     // Print the column names as the headers of a table
-    echo '<table cellpadding="0"> <tr>';
+    echo '<table cellpadding="0" border="1" style="margin-bottom:30px"> <tr>';
     for($i = 0; $i < mysqli_num_fields($result); $i++) {
         $field_info = mysqli_fetch_field($result);
         if ($i > 1) {
@@ -78,11 +78,11 @@ if (!$result) {
         echo "<td>{$row['num_request']}</td>";
         echo "<td>{$row['num_provide']}</td>";
         echo "<td>{$row['unit']}</td>";
-        echo "<td>{$row['status']}</td>";
+        echo "<td style='width:80px;'>{$row['status']}</td>";
         $requserid = $row['user_id'];
         $reqitemid = $row['item_id'];
         $link = "edit_request.php?servicetype=".urlencode($servicetype)."&requserid=".$requserid."&reqitemid=".$reqitemid;
-        echo '<td><a href='.$link.'>Cancel</a></td>';
+        echo '<td style="width:80px;"><a href='.$link.'>Cancel</a></td>';
         echo "</tr>";
     }
     echo "</table>";

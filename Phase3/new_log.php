@@ -50,8 +50,8 @@ $servicetype =  $_GET["servicetype"];
                 <td><input style="width: 150px;" type="text" name="ldescription" /></td>
             </tr>   
              <tr>
-                <td class="item_label">additional note</td>
-                <td><input type="text" name="lnote" /></td>
+                <td class="item_label">Additional Note : </td>
+                <td><input style="width: 150px;" type="text" name="lnote" /></td>
             </tr>  
 
                                     

@@ -7,11 +7,11 @@ $servicetype =  $_GET["servicetype"];
 	<link rel="stylesheet" type="text/css" href="site.css">
     <body>
   	Welcome to Atlanta Sharing Alliance Coordination System!
-    <table>
+    <table border="1" style="margin-top: 50px;margin-bottom: 20px;">
     	<tr>
-   	 		<td class="heading">name</td>
-    		<td class="heading">ID</td>
-    		<td class="heading"></td>
+   	 		<td class="heading" style="width: 200px;">name</td>
+    		<td class="heading" style="width: 68px;">ID</td>
+    		<td class="heading" style="width: 68px;"></td>
     	</tr>
     <?php	
 		//get value passed from form in login.php file

@@ -55,25 +55,28 @@ while ($bunk = mysqli_fetch_assoc($result)){
 
 <!-- Html Layout Part   -->
 <?php include("lib/header.php"); ?>
-<link href="_css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="site.css">
 <title>Add Bunk</title>
 </head>
 <div class="center">
-<h1> Add Bunk </h1>
+<h4 style="text-align: center"> Add Bunk </h1>
 <p>
 <table>
     <form action="addbunk.php" method="POST">
         <tr>
-            <td><input type="submit" name="returneditservice" value="Go back to Shelter Edit Page" /></td>
+            <td><input type="submit" name="returneditservice" style="width:250px;" value="Go back to Shelter Edit Page" /></td>
         </tr>
     </form>
 </table>
 </p>
 
 <div>
+<table style="width: 50%">
     <form action="addbunk.php" method="POST">
-        <p>Bunk Type:
-            <select name="bunktype">
+       <tr>
+        <td class="left">Bunk Type:</td>
+        <td class="right">
+          <select name="bunktype" style="width: 100px;">
                 <?php
                 if (!in_array("male",$bunktype )) {
                     ?>
@@ -98,16 +101,25 @@ while ($bunk = mysqli_fetch_assoc($result)){
                 }
                 ?>
             </select>
-        </p>
-        <p>Count:
-            <input type="text" name="count" value="" />
-        </p>
-
-        <p>Available Count:
-            <input type="text" name="avcount" value="" />
-        </p>
-        <input type="submit" name="addbunk" value="Add Bunk" />
+        </td>
+        </tr>
+        
+        <tr>
+        <td class="left">Count:</td>
+        <td class="right"><input type="text"  style="width: 100px;" name="count" value="" /></td>
+        </tr>
+        <tr>
+        <td class="left">Available Count:</td>
+        <td class="right"><input type="text" name="avcount" style="width: 100px;" value="" /></td>
+        </tr>
+        <tr>
+		       <td colspan="2"><input type="submit" name="addbunk" value="Add Bunk" /></td>
+	         </tr>
+             <tr>
+             
+      
     </form>
+    </table>
 </div>
 
 </div>

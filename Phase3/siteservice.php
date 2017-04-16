@@ -203,16 +203,18 @@ if (isset($_POST["waitlistreport"])) {
     <?php
     if(isset($soupkitchen)) {
         ?>
+        <tr><td>
         <form action="siteservice.php" method="POST">
-            <tr><input type="submit" name="soupkitchenmainmenu" value="Soupkitchen Mainmenu" /></tr></form>
-        <tr> <a href="editservice.php?servicetype=<?php echo rawurlencode("soupkitchen"); ?>" > edit </a></tr>
+            <input type="submit" name="soupkitchenmainmenu" value="Soupkitchen Mainmenu" /></form></td>
+        <td> <a href="editservice.php?servicetype=<?php echo rawurlencode("soupkitchen"); ?>" > edit </a></td>
         <?php
         if ($servicenum > 1) {
             ?>
-            <tr> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("soupkitchen"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></tr>
+            <td> <a href="deleteservice.php?servicetype=<?php echo rawurlencode("soupkitchen"); ?>"  onclick="return confirm('Delete the service?');"> delete </a></td>
             <?php
         }
         ?>
+        </tr>
         <?php
     }
     ?>

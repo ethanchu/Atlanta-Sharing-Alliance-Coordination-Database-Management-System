@@ -80,9 +80,9 @@ if (isset($_POST['request_item'])) {
 <div>
     <form action="" method="POST">
         <p>Number Request:
-            <input type="number" name="NumRequest" value="" />
+            <input type="number" name="NumRequest" value="" style="height: 30px"/>
         </p>
-        <input type="submit" name="request_item" value="Request Item" />
+        <div style="text-align: center;"><input type="submit" name="request_item" value="Request Item" /></div>
     </form>
 </div>
 

@@ -24,7 +24,7 @@
          
          header("location: siteservice.php");
       }else {
-      	 $error = "SORRY... YOU ENTERD WRONG ID AND PASSWORD... PLEASE RETRY...";
+      	 $error = "SORRY... YOU ENTERED WRONG ID AND PASSWORD... PLEASE RETRY...";
       }
    } else {
    	session_unset();

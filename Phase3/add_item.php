@@ -55,37 +55,45 @@ if (isset($_POST["add_item"])) {
 <table>
     <form action="add_item.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" style="width:250px;" value="Go back to FoodBank Page" /></td>
         </tr>
     </form>
 </table>
 
 <div>
+<table>
     <form action="add_item.php" method="POST">
-        <p>Item Name:
-            <input type="text" name="Name" value="" />
-        </p>
-        <p>Unit:
-            <input type="number" name="Unit" value="" />
-        </p>
-        <p>Storage Type:
-            <select name="StorageType">
+        <tr>
+        <td class="left">Item Name:</td>
+        <td class="right"><input type="text" name="Name" value="" style="width: 250px;" /></td>
+        </tr>
+        <tr>
+        <td class="left">Unit:</td>
+        <td class="right"><input type="number" name="Unit" value=""  style="width: 250px;height: 30px;" /></td>
+        </tr>
+        <tr>
+        <td class="left">Storage Type:</td>
+        <td class="right"><select name="StorageType" style="height: 30px;">
                 <option value="NULL"></option>
                 <option value="drygood">drygood</option>
                 <option value="refrigerated">refrigerated</option>
                 <option value="frozen">frozen</option>
-            </select>
-        </p>
-        <p>Expiration Date:
-            <input type="date" name="ExpirationDate" value="" />
-        </p>
-        <p>Category:
-            <select name="Category">
+            </select></td>
+        </tr>
+        <tr>
+        <td class="left">Expiration Date:</td>
+        <td class="right"><input type="date" name="ExpirationDate" value=""  style="width: 250px;height: 30px;"/></td>
+        </tr>
+        <tr>
+        <td class="left">Category:</td>
+        <td class="right"><select name="Category" style="height: 30px;">
                 <option value="food">Food</option>
                 <option value="supplies">Supplies</option>
-            </select>
-        </p>
-        <p>Sub-Category:
+            </select></td>
+        </tr>
+        <tr>
+        <td class="left">Sub-Category:</td>
+        <td class="right">
             <?php
                 $cat = $_POST["Category"];
                 /*
@@ -107,7 +115,7 @@ if (isset($_POST["add_item"])) {
                           </select>';
                 }
                 */
-            echo '<select name="SubCategory">
+            echo '<select name="SubCategory" style="height: 30px;">
                       <option value="vegetables">vegetables</option>
                       <option value="nuts/grains/beans">nuts/grains/beans</option>
                       <option value="meat/seafood">meat/seafood</option>
@@ -120,9 +128,14 @@ if (isset($_POST["add_item"])) {
                       <option value="other">other</option>
                  </select>';
             ?>
-        </p>
-        <input type="submit" name="add_item" value="Add Item" />
+        </td>
+        </tr>
+        <tr>
+		       <td colspan="2"><input type="submit" name="add_item" value="Add Item" /></td>
+	         </tr>
+             <tr>
     </form>
+  </table>
 </div>
 
 <?php include("lib/footer.php"); ?>

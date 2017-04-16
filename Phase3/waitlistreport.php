@@ -56,9 +56,9 @@ if (!$result) {
     ?>
             <tr>
                 <form action="editwaitlist.php" method="POST">
-                <td> <input type="text" style="text-align:center;" name="Site_id" value="<?php echo $wl_item["site_id"] ?>" readonly  /> </td>
-                <td> <input type="text" style="text-align:center;" name="Service Name" value="<?php echo $wl_item["service_name"] ?>"  /></td>
-                <td> <input type="text" style="text-align:center;" name="Length of Waitlist" value="<?php echo $wl_item["num"] ?>"  /></td>
+                <td> <input type="text" style="text-align:center;width:150px;" name="Site_id" value="<?php echo $wl_item["site_id"] ?>" readonly  /> </td>
+                <td> <input type="text" style="text-align:center;width:150px;" name="Service Name" value="<?php echo $wl_item["service_name"] ?>"  /></td>
+                <td> <input type="text" style="text-align:center;width:100px;" name="Length of Waitlist" value="<?php echo $wl_item["num"] ?>"  /></td>
                 </form>
             </tr>
     <?php

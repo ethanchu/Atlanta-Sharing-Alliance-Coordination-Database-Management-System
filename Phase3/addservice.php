@@ -86,7 +86,7 @@ if (isset($_POST["returnsiteservice"])) {
 <title>Add Service</title>
 </head>
 <div class="center">
-<h1> Add Service </h1>
+<h4 style="text-align: center"> Add Service </h4>
 <p>
     <table>
         <form action="addservice.php" method="POST">

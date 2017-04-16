@@ -59,7 +59,7 @@ if (isset($_POST['cancel_request'])) {
 <table>
     <form action="" method="POST">
         <tr>
-            <td><input type="submit" name="returnviewrequest" value="Go back to View Requests Page" /></td>
+            <td><input type="submit" name="returnviewrequest" style="width: 250px" value="Go back to View Requests Page" /></td>
         </tr>
     </form>
 </table>
@@ -72,7 +72,7 @@ if (isset($_POST['cancel_request'])) {
                 <option value="no">No</option>
             </select>
         </p>
-        <input type=submit name="cancel_request" value = "Confirm">
+        <div style="text-align: center"><input type=submit name="cancel_request" value = "Confirm"></div>
     </form>
 
 </div>

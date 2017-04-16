@@ -112,7 +112,7 @@ if (!$result) {
     ?>
             <tr>
                 <form action="editwaitlist.php" method="POST">
-                <td> <input type="text" style="text-align:center;" name="client_id" value="<?php echo $wl_item["client_id"] ?>" readonly  /> </td>
+                <td> <input type="text" style="text-align:center;width: 100px;" name="client_id" value="<?php echo $wl_item["client_id"] ?>" readonly  /> </td>
                 <td> <?php
                     $curclientid = $wl_item["client_id"];
                     $curclientidarray[] = $curclientid;
@@ -123,12 +123,12 @@ if (!$result) {
                     }
                     $curclient = mysqli_fetch_assoc($curclientresult);
                     ?>
-                    <input type="text" style="text-align:center;" name="clientname" value="<?php echo $curclient["name"] ?>" readonly />
+                    <input type="text" style="text-align:center;width: 150px;" name="clientname" value="<?php echo $curclient["name"] ?>" readonly />
                 </td>
-                <td> <input type="text" style="text-align:center;" name="waitinglist_ranking" value="<?php echo $wl_item["waitinglist_ranking"] ?>"  /></td>
-                <td> <input type="text" style="text-align:center;" name="datetime" value="<?php echo $wl_item["datetime"] ?>" readonly /></td>
-                <td> <input type="submit" name="editwaitlist" value="Edit" /></td>
-                <td> <input type="submit" name="deletewaitlist" value="Delete" /></td>
+                <td> <input type="text" style="text-align:center;width: 100px;" name="waitinglist_ranking" value="<?php echo $wl_item["waitinglist_ranking"] ?>"  /></td>
+                <td> <input type="text" style="text-align:center;width: 155px;" name="datetime" value="<?php echo $wl_item["datetime"] ?>" readonly /></td>
+                <td> <input type="submit" name="editwaitlist" value="Edit" style="width: 60px" /></td>
+                <td> <input type="submit" name="deletewaitlist" value="Delete" style="width: 60px" /></td>
                 </form>
             </tr>
     <?php
@@ -168,7 +168,7 @@ if (!$result) {
                     ?>
                 </select>
                 </td>
-                <td> <input type="text" style="text-align:center;" name="waitinglist_ranking" value=""  /></td>
+                <td> <input type="text" style="text-align:center;width: 100px;" name="waitinglist_ranking" value=""  /></td>
                 <td> <input type="submit" name="addwaitlist" value="Add" /></td>
             </form>
         </tr>

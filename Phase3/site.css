@@ -59,3 +59,17 @@ span.psw {
 .container {
 	text-align: center;
 }
+
+tr {
+  line-height: 30px;
+
+}
+
+td.left {
+	width: 40%;
+    text-align: right;
+}
+
+td.right {
+	text-align: left;
+}

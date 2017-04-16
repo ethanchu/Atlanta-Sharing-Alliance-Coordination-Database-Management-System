@@ -55,12 +55,12 @@ if (!$result) {
 <link rel="stylesheet" type="text/css" href="site.css">
 <title>View Outstanding Requests</title>
 </head>
-<h4 style="text-align:center"> View Outstanding Requests </h4>
+<h4 style="text-align:center;"> View Outstanding Requests </h4>
 <body>
 <table>
     <form action="view_report.php" method="POST">
         <tr>
-            <td><input type="submit" name="returnfoodbank" value="Go back to FoodBank Page" /></td>
+            <td><input type="submit" name="returnfoodbank" style="width: 250px;" value="Go back to FoodBank Page" /></td>
         </tr>
     </form>
 </table>
@@ -81,7 +81,7 @@ if (!$result) {
 
     <?php
     // Print the column names as the headers of a table
-    echo '<table cellpadding="0"> <tr>';
+    echo '<table cellpadding="0" border="1" style="margin-bottom: 40px;"> <tr>';
     for($i = 0; $i < mysqli_num_fields($result); $i++) {
         $field_info = mysqli_fetch_field($result);
         if ($i > 1) {
@@ -110,12 +110,12 @@ if (!$result) {
         echo "<td>{$row['storage_type']}</td>";
         echo "<td>{$row['category']}</td>";
         echo "<td>{$row['sub_category']}</td>";
-        echo "<td>{$row['status']}</td>";
+        echo "<td style='width:70px'>{$row['status']}</td>";
         $requserid = $row['user_id'];
         $reqitemid = $row['item_id'];
         $link = "edit_report.php?requserid=".$requserid."&reqitemid=".$reqitemid;
         // echo '<td><a href="edit_report.php">Edit</a></td>';
-        echo '<td><a href='.$link.'>Edit</a></td>';
+        echo '<td style="width:70px"><a href='.$link.'>Edit</a></td>';
         echo "</tr>";
     }
 
