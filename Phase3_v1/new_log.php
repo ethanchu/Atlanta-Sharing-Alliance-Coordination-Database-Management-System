@@ -25,8 +25,8 @@ $servicetype =  $_GET["servicetype"];
         $_SESSION['Error2'] = "Please enter an site id.";   
     }
     
-    $sql="INSERT INTO log (client_id, site_id, description) ".
-     "VALUES ($clientid, $site, '$descri')";
+    $sql="INSERT INTO log (client_id, site_id, description, note) ".
+     "VALUES ($clientid, $site, '$descri', '$note')";
     $queryID = mysqli_query($connection, $sql);
     $count =mysqli_affected_rows($connection);
     if($count >0) {
@@ -49,6 +49,10 @@ $servicetype =  $_GET["servicetype"];
                 <td style="text-align: left;" class="item_label">Service Description : </td>
                 <td><input style="width: 150px;" type="text" name="ldescription" /></td>
             </tr>   
+             <tr>
+                <td class="item_label">additional note</td>
+                <td><input type="text" name="lnote" /></td>
+            </tr>  
 
                                     
         </table>

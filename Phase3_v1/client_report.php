@@ -53,6 +53,7 @@ $servicetype =  $_GET["servicetype"];
                     <td>site_id</td>
                     <td>service description</td>
                     <td>field_modified</td>
+                    <td class="heading">note</td>
                     <td><a href="new_log.php?servicetype=<?php echo$servicetype ?>&logID=<?php echo $_GET['selectID'] ?> ">add new log</a></td>
 
                 </tr>                           
@@ -72,6 +73,7 @@ $servicetype =  $_GET["servicetype"];
                     print "<td>" . $row[2] . "</td>";
                     print "<td>{$row[3]}</td>";
                     print "<td>" . $row[4] . "</td>";
+                    print "<td>" . $row[5] . "</td>";
                     
                     print "</tr>";  
                 }
