@@ -1,0 +1,66 @@
+commit id: cc31b0e30a4fc66fa562bb35b688d1a50ae4e585
+
+SELECT * FROM `foodbank` WHERE site_id = 1
+Attempt to remove all services from 'site1' - should show error. (either: 'emp1' or 'vol1' at 'site1')
+SELECT * FROM `foodbank` WHERE site_id = 1
+****Do not log out another user!!!
+
+Foodbank:
+Add: Fast Noodle
+Test: User should be able to add items due to donations (insert queries commit to database successfully)
+SELECT * FROM `item` where site_id = 1 AND name ='Fast Noodle'
+Test: Items are deducted from inventory when requests are marked fulfilled (closed)
+SELECT * FROM `item` where site_id = 1 AND name ='lettuce'
+
+Client Search / Logs:
+SELECT * FROM `client` where name LIKE '%Joe%'
+SELECT * FROM `client` where name LIKE '%Jane%'
+SELECT * FROM `client` where name LIKE '%Client7%'
+Add log:
+SELECT * FROM `log` Where client_id = 7
+Change name from "Joe Client7" to "Jane Client7"
+
+Waitlist Report:
+Go to site to by emp2
+SELECT * FROM `waitlist` WHERE site_id = 2
+For waitlist report
+SELECT * FROM `waitlist`
+
+Item Search
+SELECT * FROM `item` WHERE name = 'underwear'
+SELECT * FROM `item` WHERE site_id = 1
+SELECT * FROM `item` WHERE sub_category = 'dairy/eggs'
+SELECT * FROM `item` WHERE storage_type = 'refrigerated'
+SELECT * FROM `item` WHERE category = 'supplies'
+SELECT * FROM `item` WHERE expiration_date < CURRENT_DATE
+Remove items in current bank
+SELECT * FROM `item` WHERE site_id = 2 AND name = 'winter jackets'
+
+Two Public Web Reports:
+bunk
+SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number,
+Shelter.hours_of_operation, Shelter.condition_for_use,Bunk.type, Bunk.available_count FROM(( Site INNER JOIN Bunk ON Site.site_id = Bunk.site_id)
+INNER JOIN Shelter ON Site.site_id = Shelter.site_id) WHERE available_count>0
+familyroom:
+SELECT Site.Name, CONCAT(Site.street_address,',', Site.city,',', Site.state,',', Site.zipcode) AS Address,Site.phone_number, Shelter.familyroom_count FROM Site INNER JOIN Shelter ON Site.site_id = Shelter.site_id WHERE familyroom_count>0
+
+SELECT * FROM item Where site_id = 2 AND sub_category = 'dairy/eggs'
+UPDATE Item SET unit= 13 WHERE item_id=13 AND site_id=2 AND service_name='foodbank'
+
+Outstanding Item Request from Food Bank:
+go to emp2
+SELECT * FROM item WHERE name = 'lingcod' AND site_id = 2
+sortable
+SELECT `name`, num_request, num_provide, unit, storage_type, category, sub_category, status FROM item AS i join request AS r on i.item_id=r.item_id where i.site_id = 2 order by category
+SELECT `name`, num_request, num_provide, unit, storage_type, category, sub_category, status FROM item AS i join request AS r on i.item_id=r.item_id where i.site_id = 2 order by num_request
+
+SELECT `name`, num_request, num_provide, unit, storage_type, category, sub_category, status ,user_id, i.item_id FROM item AS i join request AS r on i.item_id=r.item_id where i.site_id = 2
+SELECT * FROM `item` WHERE name = 'catfish' and site_id = 2
+
+Item Request Status from Food Bank: status actions- modify or cancel
+SELECT user_id, i.item_id, `name`, num_request, num_provide, unit, status FROM request AS r join item AS i on i.item_id=r.item_id WHERE r.user_id=2
+
+SELECT * FROM `request`
+request 1st in site1 and site3
+
+
